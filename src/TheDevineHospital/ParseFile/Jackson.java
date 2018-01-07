@@ -9,13 +9,14 @@ import java.io.IOException;
 public class Jackson extends Parse{
 
     @Override
-    public void parse(String fileName) {
+    public Hospital parse(String fileName) {
         ObjectMapper objectMapper = new ObjectMapper();
+        Hospital hospital = null;
         try {
-            Hospital hospital = objectMapper.readValue(new File(fileName), Hospital.class);
-            System.out.println(hospital.toString());
+            hospital = objectMapper.readValue(new File(fileName), Hospital.class);
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return hospital;
     }
 }

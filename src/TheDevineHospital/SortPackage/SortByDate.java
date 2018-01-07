@@ -1,13 +1,14 @@
 package TheDevineHospital.SortPackage;
 
 import TheDevineHospital.EntityClasses.Doctors;
+import TheDevineHospital.EntityClasses.People;
 
 import java.util.Comparator;
 import java.util.Date;
 
-public class SortByDate implements Comparator<Doctors>{
+public class SortByDate implements Comparator<People>{
     @Override
-    public int compare(Doctors o1, Doctors o2) {
+    public int compare(People o1, People o2) {
         Date date = o1.getDateOfBirth();
         Date date2 = o2.getDateOfBirth();
 

@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
-public class Doctors {
+public class Doctors extends People {
     private int id;
     private String name;
     private String degree;
@@ -17,6 +17,8 @@ public class Doctors {
     @JsonProperty ("type")
     private List<String> type;
     private boolean visible;
+
+
 
     @Override
     public String toString() {
@@ -49,6 +51,11 @@ public class Doctors {
     public int hashCode() {
 
         return Objects.hash(id, name, degree, dateOfBirth, yearEperience, type, visible);
+    }
+
+    @Override
+    public void say() {
+        System.out.println("Hello");
     }
 
     public int getId() {

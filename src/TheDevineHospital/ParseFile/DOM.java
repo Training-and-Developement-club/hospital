@@ -2,9 +2,6 @@ package TheDevineHospital.ParseFile;
 
 import TheDevineHospital.EntityClasses.Doctors;
 import TheDevineHospital.EntityClasses.Hospital;
-import TheDevineHospital.SortPackage.SortByDate;
-import TheDevineHospital.SortPackage.SortByName;
-import TheDevineHospital.SortPackage.SortBySurname;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -16,7 +13,6 @@ import java.io.FileInputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -29,7 +25,7 @@ public class DOM extends Parse {
 
 
     @Override
-    public void parse(String filaName) {
+    public Hospital parse(String filaName) {
         DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder documentBuilder = null;
         Document document = null;
@@ -89,7 +85,7 @@ public class DOM extends Parse {
         hospital.setDoctors(doctors);
         System.out.println(hospital.toString());
 
-
+        return hospital;
 
       /*
       * @return Триггеры для сортировочек  !!!!!!!!!!!!!!!!!!!!!!!!правка нужна!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
