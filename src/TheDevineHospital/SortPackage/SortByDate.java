@@ -6,7 +6,10 @@ import TheDevineHospital.EntityClasses.People;
 import java.util.Comparator;
 import java.util.Date;
 
-public class SortByDate implements Comparator<People>{
+/*
+ * @return Все мы знаем зачем нужен Компаратор
+ * */
+public class SortByDate implements Comparator<People> {
     @Override
     public int compare(People o1, People o2) {
         Date date = o1.getDateOfBirth();

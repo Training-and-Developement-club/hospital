@@ -5,6 +5,9 @@ import TheDevineHospital.EntityClasses.People;
 
 import java.util.Comparator;
 
+/*
+ * @return Все мы знаем зачем нужен Компаратор
+ * */
 public class SortBySurname implements Comparator<People> {
     @Override
     public int compare(People o1, People o2) {
