@@ -6,7 +6,10 @@ import com.google.gson.GsonBuilder;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-
+/*
+* @return Этот класс используется библиотеку от Google - GSON.
+* Выйгрывает по скорости у всех при парсинге большого кол-ва маленьких Json - файлов, но для больших в каталоге есть Jackson.
+* */
 public class GsonParser extends Parse {
 
     @Override

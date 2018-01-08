@@ -4,6 +4,7 @@ import TheDevineHospital.DownloadFiles.URLDownload;
 import TheDevineHospital.EntityClasses.Doctors;
 import TheDevineHospital.EntityClasses.Hospital;
 import TheDevineHospital.InputAndOutputText.HelpInput;
+import TheDevineHospital.ParseFile.DOM;
 import TheDevineHospital.ParseFile.Jackson;
 import TheDevineHospital.SearchPackage.SearchDoctorsByDate;
 import TheDevineHospital.SearchPackage.SearchDoctorsByName;
@@ -25,10 +26,9 @@ public class ControlCenter {
 
     public static void controlCenter() {
         ControlCenter cc = new ControlCenter();
-        //URLDownload.download("http://kiparo.ru/t/hospital.xml");
-        //Hospital hospital = new DOM().parse("hospital.xml");
         URLDownload.download("http://kiparo.ru/t/hospital.json");
         hospital = new Jackson().parse("hospital.json");
+        //hospital = new DOM().parse("hospital.xml");
         System.out.println(hospital.getDoctors().toString());
 
 
