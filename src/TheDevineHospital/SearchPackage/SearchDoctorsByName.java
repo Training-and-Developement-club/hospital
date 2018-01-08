@@ -8,9 +8,8 @@ import TheDevineHospital.TheCommandCenterOfThisProgramm.ControlCenter;
  * @return This class contains search methods by name for DOCTORS!!!
  */
 public class SearchDoctorsByName {
-    public static void search() {
-        ControlCenter cc = new ControlCenter();
-        Hospital hospital = cc.getHospital(); //Нарушение инкапсуляции? или нет? Если да - переделать.
+    public static void search(Hospital hospital) {
+
 
         if (hospital.equals(null)) {
             System.err.println("Объект Hospital не найден");

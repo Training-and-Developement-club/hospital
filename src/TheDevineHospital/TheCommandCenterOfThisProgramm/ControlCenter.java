@@ -67,7 +67,7 @@ public class ControlCenter {
                     "3)");
             input = HelpInput.inputNumber();
             if(input==1){
-                search();
+                search(hospital);
             }else if(input==2){
                 SearchDoctorsByDate.search(hospital.getDoctors());
                 takeTheMassage();

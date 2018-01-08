@@ -1,7 +1,7 @@
 <component name="libraryTable">
-  <library name="joda-time-2.4">
+  <library name="junit-4.12">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/../joda-time-2.4/joda-time-2.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/JUnit4/junit-4.12.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
