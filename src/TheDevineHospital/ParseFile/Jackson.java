@@ -5,10 +5,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
 import java.io.IOException;
+
 /*
-* @return Парсинг для титанических json-файлов
-* */
-public class Jackson extends Parse{
+ * @return Парсинг для титанических json-файлов
+ * */
+public class Jackson extends Parse {
 
     @Override
     public Hospital parse(String fileName) {

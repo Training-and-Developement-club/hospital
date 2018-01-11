@@ -1,13 +1,12 @@
 package TheDevineHospital.TheCommandCenterOfThisProgramm;
 
 import TheDevineHospital.DownloadFiles.URLDownload;
-import TheDevineHospital.EntityClasses.Doctors;
+
 import TheDevineHospital.EntityClasses.Hospital;
 import TheDevineHospital.InputAndOutputText.HelpInput;
-import TheDevineHospital.ParseFile.DOM;
+
 import TheDevineHospital.ParseFile.Jackson;
 import TheDevineHospital.SearchPackage.SearchDoctorsByDate;
-import TheDevineHospital.SearchPackage.SearchDoctorsByName;
 import TheDevineHospital.SortPackage.SortByDate;
 import TheDevineHospital.SortPackage.SortByName;
 import TheDevineHospital.SortPackage.SortBySurname;
@@ -16,12 +15,17 @@ import TheDevineHospital.SortPackage.SortBySurname;
 import java.util.Collections;
 
 import static TheDevineHospital.SearchPackage.SearchDoctorsByName.search;
+
 /*
-* @return Пользовательский интерфейс
-*   ******************(переделать с gui!!!!)*******************
-* */
+ * @return Пользовательский интерфейс
+ *   ******************(переделать с gui!!!!)*******************
+ * */
 public class ControlCenter {
     private static Hospital hospital;
+    private static ControlCenter center;
+
+
+
 
 
     public static void controlCenter() {
@@ -30,7 +34,6 @@ public class ControlCenter {
         hospital = new Jackson().parse("hospital.json");
         //hospital = new DOM().parse("hospital.xml");
         System.out.println(hospital.getDoctors().toString());
-
 
 
         //System.out.println(string);
@@ -52,12 +55,6 @@ public class ControlCenter {
     }
 
 
-
-
-
-
-
-
     public void letsGoMassage() {
         int input = HelpInput.inputNumber();
         if (input == 1) {
@@ -66,13 +63,13 @@ public class ControlCenter {
                     "2)По дате рождения" + "\n" +
                     "3)");
             input = HelpInput.inputNumber();
-            if(input==1){
+            if (input == 1) {
                 search(hospital);
-            }else if(input==2){
+            } else if (input == 2) {
                 SearchDoctorsByDate.search(hospital.getDoctors());
                 takeTheMassage();
             }
-            } else if (input == 2) {
+        } else if (input == 2) {
             System.out.println("Произвести сортировку по: " + "\n" +
                     "1)Имени" + "\n" +
                     "2)Фамилии" + "\n" +
@@ -90,7 +87,7 @@ public class ControlCenter {
                 Collections.sort(hospital.getDoctors(), new SortByDate());
                 System.out.println("Результат сортировки:");
                 System.out.println(hospital.getDoctors().toString());
-            }else takeTheMassage();
+            } else takeTheMassage();
         } else if (input == 3) {
             System.out.println(hospital.toString());
             takeTheMassage();
@@ -100,20 +97,15 @@ public class ControlCenter {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    /*
+     *@return This method use Singlton Pattern
+     */
+    public static ControlCenter newInstance() {
+        if (center == null) {
+            center = new ControlCenter();
+        }
+        return center;
+    }
 
     public static Hospital getHospital() {
         return hospital;
