@@ -1,6 +1,8 @@
 package TheDevineHospital.EntityClasses.heap_NOTWORKED;
 
 
+import TheDevineHospital.EntityClasses.People;
+
 public abstract class Patient {
 
     protected String name;

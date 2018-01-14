@@ -6,10 +6,10 @@ import java.util.Date;
 *         Делался для уменьшения кол-ва методов посредством полиморфических аргументов, наследования и т.д
 * */
 public abstract class People {
-    private int id;
-    private String name;
-    private String degree;
-    private Date dateOfBirth;
+    protected int id;
+    protected String name;
+    protected String degree;
+    protected Date dateOfBirth;
 
     public abstract void say();
 

@@ -2,7 +2,6 @@ package TheDevineHospital.DownloadFiles;
 
 
 import TheDevineHospital.InputAndOutputText.HelpInput;
-import TheDevineHospital.RegularExpressionsAndAnonumusClasses.FixLinkOnFile;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
@@ -10,15 +9,17 @@ import java.net.URL;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+
+/*
+ * @return Принимает ссылку на документ json\xml, проверяет её на соответствие шаблону  и загружает её на локальный диск.
+ * */
 public class URLDownload {
     public static final String LINK = "http://kiparo.ru/t/hospital.xml";
     public static final String LINK1 = "http://kiparo.ru/t/hospital.json";
     private static String hospitalXML = "hospital.xml";
     private static String hospitalJSON = "hospital.json";
-    private static URLDownload urlDownload = new URLDownload();
-    /*
-     * @return Принимает ссылку на документ json\xml, проверяет её на соответствие шаблону регулярных выражений и анонимного класса и загружает её на локальный диск.
-     * */
+    private static URLDownload urlDownload = new URLDownload();//Singleton
+
 
     public void downloadXml(String UrlAdress) {
         Pattern patternXML = Pattern.compile("^http://((.)+)\\.(xml)$");
@@ -34,14 +35,9 @@ public class URLDownload {
             }
         } else {
             System.out.println("Некорректный формат ссылки на файл");
-            System.out.println("Попробуйте ввести ссылку вручную:");//************** Убрать или переделать? а может оставить************
-            fixLinkOnFile(new FixLinkOnFile() {//своего рода зацикливание до тех пор, пока не будет передана корректная ссылка
-                @Override
-                public void fix() {
-                    String gogoNewURL = HelpInput.inputString();
-                    downloadXml(gogoNewURL);
-                }
-            });
+            System.out.println("Попробуйте ввести ссылку вручную:");
+            String gogoNewURL = HelpInput.inputString();
+            downloadXml(gogoNewURL);
         }
 
 
@@ -62,14 +58,9 @@ public class URLDownload {
 
         } else {
             System.out.println("Некорректный формат ссылки на файл");
-            System.out.println("Попробуйте ввести ссылку вручную:");//************** Убрать или переделать? а может оставить************
-            fixLinkOnFile(new FixLinkOnFile() {//своего рода зацикливание до тех пор, пока не будет передана корректная ссылка)))
-                @Override
-                public void fix() {
-                    String gogoNewURL = HelpInput.inputString();
-                    downloadXml(gogoNewURL);
-                }
-            });
+            System.out.println("Попробуйте ввести ссылку вручную:");
+            String gogoNewURL = HelpInput.inputString();
+            downloadJson(gogoNewURL);
         }
     }
 
@@ -96,10 +87,6 @@ public class URLDownload {
 
     public static void setUrlDownload(URLDownload urlDownload) {
         URLDownload.urlDownload = urlDownload;
-    }
-
-    private static void fixLinkOnFile(FixLinkOnFile fixLinkOnFile) {
-        fixLinkOnFile.fix();
     }
 
 

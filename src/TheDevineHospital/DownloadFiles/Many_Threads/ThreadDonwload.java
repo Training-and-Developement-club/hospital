@@ -16,13 +16,8 @@ public class ThreadDonwload extends Thread {
 
 
         synchronized (Object.class) {
-
-
             URLDownload.getUrlDownload().downloadXml(URLDownload.LINK);
-
-
             Object.class.notify();
-
 
             try {
                 Object.class.wait();
@@ -30,11 +25,7 @@ public class ThreadDonwload extends Thread {
                 e.printStackTrace();
             }
 
-
             URLDownload.getUrlDownload().downloadJson(URLDownload.LINK1);
-
-
-
             Object.class.notify();
 
         }
