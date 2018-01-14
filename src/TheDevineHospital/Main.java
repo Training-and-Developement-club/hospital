@@ -11,7 +11,8 @@ import TheDevineHospital.TheCommandCenterOfThisProgramm.ControlCenter;
 public class Main {
 
     public static void main(String[] args) {
-        ControlCenter.controlCenter();
+        ControlCenter cc = ControlCenter.newInstance();
+        ControlCenter.controlCenter(cc);
 
         //************json create*********************
         /*List<Patient> patients = new ArrayList<>();

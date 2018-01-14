@@ -20,7 +20,6 @@ public class DOM extends Parse {
     /*
      * @return STAX и SAX не стал использовать потому что XML - документ маленький,
      * да и само приложение не выполняет обработок гигантского кол-ва информации.
-     * Да и просто решил помучать себя старым дедовским парсером)
      */
 
 
@@ -87,18 +86,6 @@ public class DOM extends Parse {
 
         return hospital;
 
-      /*
-      * @return Триггеры для сортировочек  !!!!!!!!!!!!!!!!!!!!!!!!правка нужна!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-      * */
 
-       /* Collections.sort(hospital.getDoctors(),new SortBySurname());
-        System.out.println(hospital.toString());*/
-
-       /* Collections.sort(hospital.getDoctors(),new SortByDate());
-        System.out.println(hospital.toString());*/
-
-
-        /*Collections.sort(hospital.getDoctors(),new SortByName());
-        System.out.println(hospital.toString());*/
     }
 }

@@ -1,5 +1,7 @@
 package TheDevineHospital.TheCommandCenterOfThisProgramm;
 
+import TheDevineHospital.DownloadFiles.Many_Threads.ThreadDonwload;
+import TheDevineHospital.DownloadFiles.Many_Threads.ThreadParsing;
 import TheDevineHospital.DownloadFiles.URLDownload;
 
 import TheDevineHospital.EntityClasses.Hospital;
@@ -24,28 +26,60 @@ public class ControlCenter {
     private static Hospital hospital;
     private static ControlCenter center;
 
+/*Оба потока всегда запущены, с самого начала.
+Задание: вам нужно сделать загрузку XML и JSON (Ваши итоговые задание) и обработать их.
+Загрузка будет в потоке загрузки данных, а парсинг в потоке обработки данных, как было сказано выше.
+У вас должны получиться следующая последовательность:
+- Загружаем XML - поток 1
+- Обрабатываем XML - поток 2
+- Загружаем JSON - поток 1
+- Обрабатываем JSON - поток 2
+Оба потока работают на протяжении всех действий (запущены).
+XML и JSON можно хранить в файле для передачи между потоками.
+*/
 
 
 
-
-    public static void controlCenter() {
-        ControlCenter cc = new ControlCenter();
-        URLDownload.download("http://kiparo.ru/t/hospital.json");
-        hospital = new Jackson().parse("hospital.json");
-        //hospital = new DOM().parse("hospital.xml");
-        System.out.println(hospital.getDoctors().toString());
+    public static void controlCenter(ControlCenter cc) {
 
 
-        //System.out.println(string);
-        /*MyGUI myGUI = new MyGUI();
-        myGUI.goGui(hospital);*/
+        ThreadDonwload threadDonwload = new ThreadDonwload();
+        ThreadParsing threadParsing = new ThreadParsing();
+
+        threadDonwload.setThreadParsing(threadParsing);
+        threadParsing.setThreadDonwload(threadDonwload);
+        threadParsing.start();
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        threadDonwload.start();
 
 
-        cc.takeTheMassage();
+        try {
+            threadParsing.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println(hospital.toString());
+
+        //cc.begginingOfWork();
 
     }
+    
+    
+   /* public boolean[] startWork(){
 
-    public void takeTheMassage() {
+
+
+
+    }*/
+
+
+
+
+    public void begginingOfWork() {
         System.out.println("Что вы хотите сделать с докторами? : " + "\n" +
                 "1)Найти доктора" + "\n" +
                 "2)Сортировать по..." + "\n" +
@@ -67,7 +101,7 @@ public class ControlCenter {
                 search(hospital);
             } else if (input == 2) {
                 SearchDoctorsByDate.search(hospital.getDoctors());
-                takeTheMassage();
+                begginingOfWork();
             }
         } else if (input == 2) {
             System.out.println("Произвести сортировку по: " + "\n" +
@@ -87,13 +121,13 @@ public class ControlCenter {
                 Collections.sort(hospital.getDoctors(), new SortByDate());
                 System.out.println("Результат сортировки:");
                 System.out.println(hospital.getDoctors().toString());
-            } else takeTheMassage();
+            } else begginingOfWork();
         } else if (input == 3) {
             System.out.println(hospital.toString());
-            takeTheMassage();
+            begginingOfWork();
         } else if (input == 4) {
             System.exit(666);
-        } else takeTheMassage();
+        } else begginingOfWork();
     }
 
 
