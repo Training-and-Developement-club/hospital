@@ -17,9 +17,10 @@ import TheDevineHospital.SortPackage.SortBySurname;
 import java.util.Collections;
 
 import static TheDevineHospital.SearchPackage.SearchDoctorsByName.search;
-
 /*
- * @return Пользовательский интерфейс
+* */
+/*
+ * Пользовательский интерфейс
  *   ******************(переделать с gui!!!!)*******************
  * */
 public class ControlCenter {

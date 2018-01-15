@@ -6,7 +6,7 @@ import java.util.Objects;
 
 
 /*
-* @return Здесь, в (List<Patient> patients) хранится список всех пациентов, которые уже есть и которых вы ещё не добавили)
+*  Здесь, в (List<Patient> patients) хранится список всех пациентов, которые уже есть и которых вы ещё не добавили)
 */
 public class PatientList {
 

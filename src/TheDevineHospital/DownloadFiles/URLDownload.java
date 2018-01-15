@@ -11,7 +11,8 @@ import java.util.regex.Pattern;
 
 
 /*
- * @return Принимает ссылку на документ json\xml, проверяет её на соответствие шаблону  и загружает её на локальный диск.
+ * Методы принимают ссылку на документ json\xml, проверяет её на соответствие шаблону  и загружает её на локальный диск.
+ * @param urlDownload - используя паттерн проектирования синглтон создаём ссылку на класс и в дальнейшем используем только её
  * */
 public class URLDownload {
     public static final String LINK = "http://kiparo.ru/t/hospital.xml";

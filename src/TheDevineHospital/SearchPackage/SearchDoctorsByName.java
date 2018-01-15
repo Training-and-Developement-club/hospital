@@ -5,7 +5,7 @@ import TheDevineHospital.InputAndOutputText.HelpInput;
 import TheDevineHospital.TheCommandCenterOfThisProgramm.ControlCenter;
 
 /*
- * @return This class contains search methods by name for DOCTORS!!!
+ *  This class contains search methods by name for DOCTORS!!!
  */
 public class SearchDoctorsByName {
     public static void search(Hospital hospital) {

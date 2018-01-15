@@ -5,7 +5,7 @@ import TheDevineHospital.InputAndOutputText.HelpInput;
 import TheDevineHospital.TheCommandCenterOfThisProgramm.ControlCenter;
 
 /*
-*@return This class need for start the Devine Hospital.
+* This class need for start the Devine Hospital.
 */
 
 public class Main {

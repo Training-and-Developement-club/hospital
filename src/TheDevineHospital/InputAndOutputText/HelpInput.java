@@ -10,7 +10,7 @@ import java.util.Date;
 import java.util.TimeZone;
 
 /*
- * @return This class contains all input operations.
+ * This class contains all input operations.
  */
 public class HelpInput {
     private static final  String  TIMEZONE_UTC  = "UTC";

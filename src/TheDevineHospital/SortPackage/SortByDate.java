@@ -7,7 +7,7 @@ import java.util.Comparator;
 import java.util.Date;
 
 /*
- * @return Все мы знаем зачем нужен Компаратор
+ *  Все мы знаем зачем нужен Компаратор
  * */
 public class SortByDate implements Comparator<People> {
     @Override

@@ -13,7 +13,7 @@ public class Patient extends People{
     private String complaints;
     private Gender gender;
     private Date dateOfbirthday;
-    private String diseases; //@return Результат осмотра у доктора. (Заболевание пациента)
+    private String diseases; //Результат осмотра у доктора. (Заболевание пациента)
 
     public Patient() {
     }

@@ -20,7 +20,7 @@ public class TestParsing extends Assert {
         dom = new DOM();
     }
 /*
-* @return Надо бы придумать что-то другое
+* Надо бы придумать что-то другое
 * */
     @Test
     public void parse(){

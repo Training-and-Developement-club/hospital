@@ -7,14 +7,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 
 /*
- *@return Для конвертации созданных обьектов в текстовый файл с расширением json. Этакая база данных о пациентах.
+ * Для конвертации созданных обьектов в текстовый файл с расширением json. Этакая база данных о пациентах.
  */
 public class Converter {
     private static String fileName = "patient.json";
 
 
     /*
-     * @return Конвертация(или по java-вски сериализация) java-обьектов в файл с расширением json,
+     *  Конвертация(или по java-вски сериализация) java-обьектов в файл с расширением json,
      * C помощью библиотеки Jackson.
      * */
     public static void converteToJson(PatientList patientList) throws Exception {
@@ -24,7 +24,7 @@ public class Converter {
     }
 
     /*
-     * @return Декоонвертация(или по java-вски десериализация) json-файла в java-обьект,
+     * Декоонвертация(или по java-вски десериализация) json-файла в java-обьект,
      * C помощью библиотеки Jackson.
      * */
 

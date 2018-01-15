@@ -11,7 +11,7 @@ import java.util.Collections;
 
 
 /*
- *@return This class contains all Grafical User Interface.
+ * This class contains all Grafical User Interface.
  */
 public class MyGUI {
     private Hospital hospital;
