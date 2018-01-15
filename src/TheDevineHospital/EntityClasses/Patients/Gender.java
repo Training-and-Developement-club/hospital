@@ -1,4 +1,4 @@
-package TheDevineHospital.EntityClasses.heap_NOTWORKED;
+package TheDevineHospital.EntityClasses.Patients;
 
 import com.google.gson.annotations.SerializedName;
 

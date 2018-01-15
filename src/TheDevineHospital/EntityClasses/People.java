@@ -8,7 +8,6 @@ import java.util.Date;
 public abstract class People {
     protected int id;
     protected String name;
-    protected String degree;
     protected Date dateOfBirth;
 
     public abstract void say();
@@ -27,14 +26,6 @@ public abstract class People {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getDegree() {
-        return degree;
-    }
-
-    public void setDegree(String degree) {
-        this.degree = degree;
     }
 
     public Date getDateOfBirth() {

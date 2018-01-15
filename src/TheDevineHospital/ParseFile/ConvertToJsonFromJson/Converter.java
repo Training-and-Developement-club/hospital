@@ -1,7 +1,7 @@
 package TheDevineHospital.ParseFile.ConvertToJsonFromJson;
 
 
-import TheDevineHospital.EntityClasses.PatientList;
+import TheDevineHospital.EntityClasses.Patients.PatientList;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;

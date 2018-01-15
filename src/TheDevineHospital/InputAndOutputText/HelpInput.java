@@ -46,7 +46,7 @@ public class HelpInput {
 
 
     /*Принимает пользовательский ввод даты и возвращаем её в метод для последующих операций.
-    * @return Дату рождения или чего бы там ни было
+    * @return Дату в UTC
     * */
     public static Date inputDate() {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));

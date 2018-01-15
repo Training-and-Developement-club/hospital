@@ -14,6 +14,22 @@ public class Main {
         ControlCenter cc = ControlCenter.newInstance();
         ControlCenter.controlCenter(cc);
 
+        //********************xml create ****************************************************************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         //************json create*********************
         /*List<Patient> patients = new ArrayList<>();
         patients.add(new Patient("Alex Skaszagrd",15,"Сломал ногу",M));

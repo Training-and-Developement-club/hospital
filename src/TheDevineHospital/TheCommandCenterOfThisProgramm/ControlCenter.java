@@ -5,8 +5,12 @@ import TheDevineHospital.DownloadFiles.Many_Threads.ThreadParsing;
 import TheDevineHospital.DownloadFiles.URLDownload;
 
 import TheDevineHospital.EntityClasses.Hospital;
+import TheDevineHospital.EntityClasses.Patients.Gender;
+import TheDevineHospital.EntityClasses.Patients.Patient;
+import TheDevineHospital.EntityClasses.Patients.PatientList;
 import TheDevineHospital.InputAndOutputText.HelpInput;
 
+import TheDevineHospital.ParseFile.ConvertToXmlFromXml.XmlConverter;
 import TheDevineHospital.ParseFile.Jackson;
 import TheDevineHospital.SearchPackage.SearchDoctorsByDate;
 import TheDevineHospital.SortPackage.SortByDate;
@@ -15,6 +19,7 @@ import TheDevineHospital.SortPackage.SortBySurname;
 
 
 import java.util.Collections;
+import java.util.HashMap;
 
 import static TheDevineHospital.SearchPackage.SearchDoctorsByName.search;
 
@@ -51,7 +56,17 @@ public class ControlCenter {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println(hospital.toString());
+        System.out.println(hospital.toString());//end
+
+        //***********************ConvertToXml***************************
+        PatientList patientList = PatientList.newInstance();
+        patientList.getPatients().add(new Patient(patientList.getPatients().size()+1, "Андрей", "Андреев", "Петоченко",
+                "Болит колено", Gender.M,
+                HelpInput.inputDate(),"Ушиб колено"));
+        patientList.getPatients().add(new Patient(patientList.getPatients().size()+1, "Лиана", "Игоревна", "Старевич",
+                "Болит голень", Gender.F,
+                HelpInput.inputDate(),"Открытый перелом голени"));
+        XmlConverter.convertToXml();
 
         //cc.begginingOfWork();
 
