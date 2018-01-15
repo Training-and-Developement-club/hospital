@@ -18,16 +18,16 @@ public class Main {
         /*List<Patient> patients = new ArrayList<>();
         patients.add(new Patient("Alex Skaszagrd",15,"Сломал ногу",M));
         patients.add(new Patient("Trisha Naggets",33,"Пробита ладонь гвоздём",F));
-        patients.add(new Patient("Andry Jackman",42,"Опух локоть",M));*/
-        /*PatientList pl = new PatientList();
+        patients.add(new Patient("Andry Jackman",42,"Опух локоть",M));
+        PatientList pl = new PatientList();
         pl.setPatients(patients);
         System.out.println(pl.toString());
         try {
             Converter.converteToJson(pl);
         } catch (Exception e) {
             e.printStackTrace();
-        }*/
-
+        }
+*/
         /*PatientList pl;
         try {
 

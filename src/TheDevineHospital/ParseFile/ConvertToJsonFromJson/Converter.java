@@ -1,4 +1,4 @@
-package TheDevineHospital.ParseFile.ConvertToJsonFromJson_ForCreatePatient;
+package TheDevineHospital.ParseFile.ConvertToJsonFromJson;
 
 
 import TheDevineHospital.EntityClasses.PatientList;
@@ -7,7 +7,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 
 /*
- * Для конвертации созданных обьектов в текстовый файл с расширением json. Этакая база данных о пациентах.
+ * Для конвертации созданных обьектов в текстовый файл с расширением json.
  */
 public class Converter {
     private static String fileName = "patient.json";

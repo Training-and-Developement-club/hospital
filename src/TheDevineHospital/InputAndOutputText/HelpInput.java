@@ -1,6 +1,8 @@
 package TheDevineHospital.InputAndOutputText;
 
 
+import TheDevineHospital.Exception.FormatException;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -15,7 +17,10 @@ import java.util.TimeZone;
 public class HelpInput {
     private static final  String  TIMEZONE_UTC  = "UTC";
     private static Date date;
-    //Для ввода простых строк с консоли
+
+
+
+    //@return Строку введённую на консоли
     public static String inputString() {
         String result = null;
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
@@ -27,7 +32,7 @@ public class HelpInput {
         return result;
     }
 
-    //Для ввода простых целочисленных значений с консоли
+    //@return Целочисленное значение ввведённое с консоли
     public static int inputNumber() {
         int result = 0;
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
@@ -39,7 +44,10 @@ public class HelpInput {
         return result;
     }
 
-    //Принимает пользовательский ввод даты и возвращаем её в метод для последующих операций.
+
+    /*Принимает пользовательский ввод даты и возвращаем её в метод для последующих операций.
+    * @return Дату рождения или чего бы там ни было
+    * */
     public static Date inputDate() {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Введите дату рождения человека в формате dd-MM-yyyy (25-12-2000)");

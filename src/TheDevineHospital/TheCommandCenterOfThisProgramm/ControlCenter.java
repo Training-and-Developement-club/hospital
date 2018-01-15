@@ -17,27 +17,15 @@ import TheDevineHospital.SortPackage.SortBySurname;
 import java.util.Collections;
 
 import static TheDevineHospital.SearchPackage.SearchDoctorsByName.search;
-/*
-* */
-/*
- * Пользовательский интерфейс
+
+/* Пользовательский интерфейс
  *   ******************(переделать с gui!!!!)*******************
  * */
 public class ControlCenter {
     private static Hospital hospital;
     private static ControlCenter center;
 
-/*Оба потока всегда запущены, с самого начала.
-Задание: вам нужно сделать загрузку XML и JSON (Ваши итоговые задание) и обработать их.
-Загрузка будет в потоке загрузки данных, а парсинг в потоке обработки данных, как было сказано выше.
-У вас должны получиться следующая последовательность:
-- Загружаем XML - поток 1
-- Обрабатываем XML - поток 2
-- Загружаем JSON - поток 1
-- Обрабатываем JSON - поток 2
-Оба потока работают на протяжении всех действий (запущены).
-XML и JSON можно хранить в файле для передачи между потоками.
-*/
+
 
 
 
