@@ -14,7 +14,7 @@ public class Converter {
 
 
     /*
-     *  Конвертация(или по java-вски сериализация) java-обьектов в файл с расширением json,
+     *  Конвертация java-обьектов в файл с расширением json,
      * C помощью библиотеки Jackson.
      * */
     public static void converteToJson(PatientList patientList) throws Exception {
@@ -24,7 +24,7 @@ public class Converter {
     }
 
     /*
-     * Декоонвертация(или по java-вски десериализация) json-файла в java-обьект,
+     * Декоонвертация json-файла в java-обьект,
      * C помощью библиотеки Jackson.
      * */
 
