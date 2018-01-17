@@ -25,6 +25,7 @@ public class URLDownload {
     public void downloadXml(String UrlAdress) {
         Pattern patternXML = Pattern.compile("^http://((.)+)\\.(xml)$");
         Matcher matcher = patternXML.matcher(UrlAdress);
+
         if (matcher.matches()) {
             System.out.println("Корректный формат ссылки xml");
             try {
@@ -89,8 +90,6 @@ public class URLDownload {
     public static void setUrlDownload(URLDownload urlDownload) {
         URLDownload.urlDownload = urlDownload;
     }
-
-
 
 
 }

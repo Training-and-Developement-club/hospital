@@ -13,7 +13,7 @@ public class SearchDoctorsByDate {
     private static Date date;
     private static final  String  TIMEZONE_UTC  = "UTC";
 /*
-*  Принимает массив peopleList котоый содержит список Докторов и дат их рождения
+*  Принимает массив peopleList котоый содержит список Докторов и их дат рождения
 *         Принимает пользовательский поисковой ввод даты, затем сравнивает эту дату с датами рождения докторов.
 * */
     public static void search(List<Doctors> peopleList) {

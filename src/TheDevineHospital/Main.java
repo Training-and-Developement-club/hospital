@@ -5,8 +5,8 @@ import TheDevineHospital.InputAndOutputText.HelpInput;
 import TheDevineHospital.TheCommandCenterOfThisProgramm.ControlCenter;
 
 /*
-* This class need for start the Devine Hospital.
-*/
+ * This class need for start the Devine Hospital.
+ */
 
 public class Main {
 
@@ -46,7 +46,6 @@ public class Main {
 */
         /*PatientList pl;
         try {
-
             pl = Converter.converterFromJson();
             System.out.println(pl.toString());
             Collections.sort(pl.getPatients(),new SortBySurname());
