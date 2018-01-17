@@ -2,24 +2,18 @@ package TheDevineHospital.TheCommandCenterOfThisProgramm;
 
 import TheDevineHospital.DownloadFiles.Many_Threads.ThreadDonwload;
 import TheDevineHospital.DownloadFiles.Many_Threads.ThreadParsing;
-import TheDevineHospital.DownloadFiles.URLDownload;
-
 import TheDevineHospital.EntityClasses.Hospital;
 import TheDevineHospital.EntityClasses.Patients.Gender;
 import TheDevineHospital.EntityClasses.Patients.Patient;
 import TheDevineHospital.EntityClasses.Patients.PatientList;
 import TheDevineHospital.InputAndOutputText.HelpInput;
-
 import TheDevineHospital.ParseFile.ConvertToXmlFromXml.XmlConverter;
-import TheDevineHospital.ParseFile.Jackson;
 import TheDevineHospital.SearchPackage.SearchDoctorsByDate;
 import TheDevineHospital.SortPackage.SortByDate;
 import TheDevineHospital.SortPackage.SortByName;
 import TheDevineHospital.SortPackage.SortBySurname;
 
-
 import java.util.Collections;
-import java.util.HashMap;
 
 import static TheDevineHospital.SearchPackage.SearchDoctorsByName.search;
 
@@ -29,7 +23,9 @@ import static TheDevineHospital.SearchPackage.SearchDoctorsByName.search;
 public class ControlCenter {
     private static Hospital hospital;
     private static ControlCenter center;
-
+    private ControlCenter(){
+        
+    }
 
 
 
