@@ -24,7 +24,7 @@ public class ControlCenter {
     private static Hospital hospital;
     private static ControlCenter center;
     private ControlCenter(){
-        
+
     }
 
 
@@ -46,7 +46,6 @@ public class ControlCenter {
         }
         threadDonwload.start();
 
-
         try {
             threadParsing.join();
         } catch (InterruptedException e) {
@@ -64,17 +63,11 @@ public class ControlCenter {
                 HelpInput.inputDate(),"Открытый перелом голени"));
         XmlConverter.convertToXml();
 
-        //cc.begginingOfWork();
+        cc.begginingOfWork();
 
     }
     
-    
-   /* public boolean[] startWork(){
 
-
-
-
-    }*/
 
 
 

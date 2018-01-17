@@ -12,7 +12,9 @@ import java.util.Objects;
 public class PatientList {
     private List<Patient> patients = new ArrayList<>();
     private static PatientList patientList;
+    private PatientList(){
 
+    }
 
     /*
     * @return Единственный нужный обьект пациентов.
@@ -37,8 +39,7 @@ public class PatientList {
         this.patients = patients;
     }
 
-    public PatientList() {
-    }
+    
 
     @Override
     public String toString() {

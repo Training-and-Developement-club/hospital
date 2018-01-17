@@ -1,6 +1,6 @@
 package TheDevineHospital.SortPackage;
 
-import TheDevineHospital.EntityClasses.Doctors;
+
 import TheDevineHospital.EntityClasses.People;
 
 import java.util.Comparator;
