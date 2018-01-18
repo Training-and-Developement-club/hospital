@@ -2,8 +2,11 @@ package TheDevineHospital.TheCommandCenterOfThisProgramm;
 
 import TheDevineHospital.DownloadFiles.URLDownload;
 import TheDevineHospital.EntityClasses.Hospital;
+import TheDevineHospital.EntityClasses.Patients.Gender;
+import TheDevineHospital.EntityClasses.Patients.Patient;
 import TheDevineHospital.EntityClasses.Patients.PatientList;
 import TheDevineHospital.InputAndOutputText.HelpInput;
+import TheDevineHospital.ParseFile.ConvertToXmlFromXml.XmlConverter;
 import TheDevineHospital.SearchPackage.SearchDoctorsByDate;
 import TheDevineHospital.SearchPackage.SearchPatientByDate;
 import TheDevineHospital.SearchPackage.SearchPatientByName;
@@ -31,13 +34,13 @@ public class ControlCenter {
 
     public void controlCenter(ControlCenter cc) {
         preparationForWork = PreparationForWork.newInstance();
-       // preparationForWork.downloadAndParsingHospital();
+        preparationForWork.downloadAndParsingHospital();
         URLDownload.setUrlDownload(null);
-        preparationForWork.uploadPatientHistory();
+       // preparationForWork.uploadPatientHistory();
 
 
         //***********************ConvertToXml***************************
-        /*PatientList patientList = PatientList.getInstance();
+        PatientList patientList = PatientList.getInstance();
         patientList.getPatients().add(new Patient(patientList.getPatients().size()+1, "Андрей", "Андреев", "Петоченко",
                 "Болит колено", Gender.M,
                 HelpInput.inputDate(),"Ушиб колено"));
@@ -45,7 +48,7 @@ public class ControlCenter {
                 "Болит голень", Gender.F,
                 HelpInput.inputDate(),"Открытый перелом голени"));
         XmlConverter.convertToXml();
-*/
+
         cc.begginingOfWork();
 
     }
@@ -62,7 +65,7 @@ public class ControlCenter {
                 "3)Показать информацию о госпитале" + "\n" +
                 "4)Найти пациента" + "\n" +
                 "5)Сортировать пациентов по..." + "\n" +
-                "6)Начать игру :D" + "\n" +
+                "6)Поиграем? :D" + "\n" +
                 "7).EXIT");
         letsGoMassage();
     }
