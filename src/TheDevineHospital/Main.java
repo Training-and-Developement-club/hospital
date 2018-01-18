@@ -10,7 +10,7 @@ import TheDevineHospital.TheCommandCenterOfThisProgramm.ControlCenter;
 public class Main {
 
     public static void main(String[] args) {
-        ControlCenter cc = ControlCenter.newInstance();
+        ControlCenter cc = ControlCenter.getInstance();
         cc.controlCenter(cc);
     }
 }

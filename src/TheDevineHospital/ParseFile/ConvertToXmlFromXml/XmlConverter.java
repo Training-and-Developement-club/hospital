@@ -41,7 +41,7 @@ public class XmlConverter {
         } catch (ParserConfigurationException e) {
             e.printStackTrace();
         }
-        PatientList patientList = PatientList.newInstance();
+        PatientList patientList = PatientList.getInstance();
 
 
         Element patients = document.createElement("Patients");
@@ -118,7 +118,7 @@ public class XmlConverter {
         }
 
 
-        PatientList patientList = PatientList.newInstance();
+        PatientList patientList = PatientList.getInstance();
         Element listElement = docomunt.getDocumentElement();
         NodeList peopleList = listElement.getElementsByTagName("Patient");
         List<Patient> patients = new ArrayList<>();

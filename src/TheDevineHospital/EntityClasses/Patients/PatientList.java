@@ -19,7 +19,7 @@ public class PatientList {
     /*
     * @return Единственный нужный обьект пациентов.
     * */
-    public static PatientList newInstance(){
+    public static PatientList getInstance(){
         if(patientList == null){
             patientList = new PatientList();
             }

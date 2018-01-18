@@ -5,7 +5,7 @@ import TheDevineHospital.InputAndOutputText.HelpInput;
 
 public class SearchPatientByName {
     public static void search() {
-        PatientList patientList = PatientList.newInstance();
+        PatientList patientList = PatientList.getInstance();
 
         if (patientList.equals(null)) {
             System.err.println("Объект Hospital не найден");
