@@ -19,7 +19,7 @@ public class URLDownload {
     public static final String LINK1 = "http://kiparo.ru/t/hospital.json";
     private static String hospitalXML = "hospital.xml";
     private static String hospitalJSON = "hospital.json";
-    private static URLDownload urlDownload = new URLDownload();//Singleton
+    private static URLDownload urlDownload = new URLDownload();
 
 
     public void downloadXml(String UrlAdress) {

@@ -1,4 +1,4 @@
-package TheDevineHospital.ParseFile;
+package TheDevineHospital.ParseFile.HospitalParser;
 
 import TheDevineHospital.EntityClasses.Hospital;
 import com.fasterxml.jackson.databind.ObjectMapper;

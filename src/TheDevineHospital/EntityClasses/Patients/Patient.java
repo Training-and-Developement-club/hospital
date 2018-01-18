@@ -9,12 +9,10 @@ import java.util.Map;
 import java.util.Objects;
 
 public class Patient extends People {
-    private int id;
     private Map<String,String> fullName = new HashMap<>();
     private int age;
     private String complaints;
     private Gender gender;
-    private Date dateOfbirthday;
     private String diseases; //Результат осмотра у доктора. (Заболевание пациента)
     private boolean isAlive = true;
     public Patient() {
@@ -22,19 +20,29 @@ public class Patient extends People {
 
 
 
-    public Patient(int id, String firstName, String surName,String lastName, String complaints, Gender gender, Date dateOfbirthday, String diseases) {
+    public Patient(int id, String firstName, String surName, String lastName, String complaints, Gender gender, Date dateOfBirth, String diseases) {
         this.id = id;
         this.fullName.put("Имя", firstName);
         this.fullName.put("Отчество", surName);
         this.fullName.put("Фамилия", lastName);
         this.complaints = complaints;
         this.gender = gender;
-        this.dateOfbirthday = dateOfbirthday;
+        this.dateOfBirth = dateOfBirth;
         this.diseases = diseases;
     }
-    private static void totalAge(){//*******************************************************************age from dateOfbirthday
+    private static void totalAge(){//*******************************************************************age from dateOfBirth
     }
-
+    public Patient(int id, String firstName, String surName, String lastName, String complaints, Gender gender, Date dateOfBirth, String diseases, boolean isAlive) {
+        this.id = id;
+        this.fullName.put("Имя", firstName);
+        this.fullName.put("Отчество", surName);
+        this.fullName.put("Фамилия", lastName);
+        this.complaints = complaints;
+        this.gender = gender;
+        this.dateOfBirth = dateOfBirth;
+        this.diseases = diseases;
+        this.isAlive = isAlive;
+    }
 
 
 
@@ -46,7 +54,7 @@ public class Patient extends People {
                 ", age=" + age +
                 ", complaints='" + complaints + '\'' +
                 ", gender=" + gender +
-                ", dateOfbirthday=" + dateOfbirthday +
+                ", dateOfBirth=" + dateOfBirth +
                 ", diseases='" + diseases + '\'' +
                 ", isAlive=" + isAlive +
                 '}';
@@ -63,14 +71,14 @@ public class Patient extends People {
                 Objects.equals(getFullName(), patient.getFullName()) &&
                 Objects.equals(getComplaints(), patient.getComplaints()) &&
                 getGender() == patient.getGender() &&
-                Objects.equals(getDateOfbirthday(), patient.getDateOfbirthday()) &&
+                Objects.equals(getDateOfBirth(), patient.getDateOfBirth()) &&
                 Objects.equals(getDiseases(), patient.getDiseases());
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(getId(), getFullName(), getAge(), getComplaints(), getGender(), getDateOfbirthday(), getDiseases(), isAlive());
+        return Objects.hash(getId(), getFullName(), getAge(), getComplaints(), getGender(), getDateOfBirth(), getDiseases(), isAlive());
     }
 
     @Override
@@ -146,11 +154,11 @@ public class Patient extends People {
         this.gender = gender;
     }
 
-    public Date getDateOfbirthday() {
-        return dateOfbirthday;
+    public Date getDateOfBirth() {
+        return dateOfBirth;
     }
 
-    public void setDateOfbirthday(Date dateOfbirthday) {
-        this.dateOfbirthday = dateOfbirthday;
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 }

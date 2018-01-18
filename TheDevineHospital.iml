@@ -8,10 +8,13 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="commons-codec-1" level="project" />
-    <orderEntry type="library" name="commons-io-2" level="project" />
     <orderEntry type="library" name="GSONandJSONSimple" level="project" />
     <orderEntry type="library" name="jackson 2" level="project" />
     <orderEntry type="library" name="JUnit4" level="project" />
-    <orderEntry type="library" name="mp3agic-0.9" level="project" />
+    <orderEntry type="library" name="gson and json-simple" level="project" />
+    <orderEntry type="library" name="jackson-2.9" level="project" />
+    <orderEntry type="library" name="apache commons-codec-1" level="project" />
+    <orderEntry type="library" name="commons-io-2" level="project" />
+    <orderEntry type="library" name="JUnit" level="project" />
   </component>
 </module>

@@ -2,8 +2,8 @@ package TheDevineHospital.TestByJUnit;
 
 import TheDevineHospital.DownloadFiles.URLDownload;
 import TheDevineHospital.EntityClasses.Hospital;
-import TheDevineHospital.ParseFile.DOM;
-import TheDevineHospital.ParseFile.Jackson;
+import TheDevineHospital.ParseFile.HospitalParser.DOM;
+import TheDevineHospital.ParseFile.HospitalParser.Jackson;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

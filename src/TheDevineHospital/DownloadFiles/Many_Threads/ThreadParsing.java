@@ -2,9 +2,8 @@ package TheDevineHospital.DownloadFiles.Many_Threads;
 
 import TheDevineHospital.DownloadFiles.URLDownload;
 import TheDevineHospital.EntityClasses.Hospital;
-import TheDevineHospital.ParseFile.DOM;
-import TheDevineHospital.ParseFile.GsonParser;
-import TheDevineHospital.ParseFile.Jackson;
+import TheDevineHospital.ParseFile.HospitalParser.DOM;
+import TheDevineHospital.ParseFile.HospitalParser.Jackson;
 import TheDevineHospital.TheCommandCenterOfThisProgramm.ControlCenter;
 
 public class ThreadParsing extends Thread {
@@ -39,7 +38,6 @@ public class ThreadParsing extends Thread {
             ControlCenter.setHospital(hospital);
 
 
-            System.out.println("Проснись, мы отработали, результат:");
             Object.class.notify();
 
 

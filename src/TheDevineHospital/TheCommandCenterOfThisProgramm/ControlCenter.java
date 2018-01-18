@@ -1,7 +1,6 @@
 package TheDevineHospital.TheCommandCenterOfThisProgramm;
 
-import TheDevineHospital.DownloadFiles.Many_Threads.ThreadDonwload;
-import TheDevineHospital.DownloadFiles.Many_Threads.ThreadParsing;
+import TheDevineHospital.DownloadFiles.URLDownload;
 import TheDevineHospital.EntityClasses.Hospital;
 import TheDevineHospital.EntityClasses.Patients.Gender;
 import TheDevineHospital.EntityClasses.Patients.Patient;
@@ -9,6 +8,7 @@ import TheDevineHospital.EntityClasses.Patients.PatientList;
 import TheDevineHospital.InputAndOutputText.HelpInput;
 import TheDevineHospital.ParseFile.ConvertToXmlFromXml.XmlConverter;
 import TheDevineHospital.SearchPackage.SearchDoctorsByDate;
+import TheDevineHospital.SearchPackage.SearchPatientByName;
 import TheDevineHospital.SortPackage.SortByDate;
 import TheDevineHospital.SortPackage.SortByName;
 import TheDevineHospital.SortPackage.SortBySurname;
@@ -32,9 +32,11 @@ public class ControlCenter {
 
 
     public void controlCenter(ControlCenter cc) {
-        preparationForWork = new PreparationForWork();
+        preparationForWork = PreparationForWork.newInstance();
         preparationForWork.downloadAndParsingHospital();
-        //preparationForWork.uploadPatientHistory();
+        URLDownload.setUrlDownload(null);
+       // preparationForWork.uploadPatientHistory();
+
 
         //***********************ConvertToXml***************************
         PatientList patientList = PatientList.newInstance();
@@ -46,7 +48,7 @@ public class ControlCenter {
                 HelpInput.inputDate(),"Открытый перелом голени"));
         XmlConverter.convertToXml();
 
-        cc.begginingOfWork();
+       // cc.begginingOfWork();
 
     }
     
@@ -58,9 +60,12 @@ public class ControlCenter {
     public void begginingOfWork() {
         System.out.println("Что вы хотите сделать с докторами? : " + "\n" +
                 "1)Найти доктора" + "\n" +
-                "2)Сортировать по..." + "\n" +
+                "2)Сортировать докторов по..." + "\n" +
                 "3)Показать информацию о госпитале" + "\n" +
-                "4).EXIT");
+                "4)Найти пациента" + "\n" +
+                "5)Сортировать пациентов по..." + "\n" +
+                "6)Начать игру :D" + "\n" +
+                "7).EXIT");
         letsGoMassage();
     }
 
@@ -102,7 +107,14 @@ public class ControlCenter {
             System.out.println(hospital.toString());
             begginingOfWork();
         } else if (input == 4) {
-            System.exit(666);
+            System.out.println("Найти: " + "\n" +
+                    "1)По имени" + "\n" +
+                    "2)По дате рождения" + "\n" +
+                    "3)");
+            input = HelpInput.inputNumber();
+            if(input == 1){
+                SearchPatientByName.search();
+            }
         } else begginingOfWork();
     }
 

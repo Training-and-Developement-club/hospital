@@ -1,5 +1,6 @@
 package TheDevineHospital.ParseFile.ConvertToXmlFromXml;
 
+import TheDevineHospital.EntityClasses.Patients.Gender;
 import TheDevineHospital.EntityClasses.Patients.Patient;
 import TheDevineHospital.EntityClasses.Patients.PatientList;
 import org.w3c.dom.Document;
@@ -14,10 +15,16 @@ import javax.xml.transform.*;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.File;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.TimeZone;
 
 /*
- * Для конвертации созданных обьектов в текстовый файл с расширением xml.
- * @param fileName в нём хранится имя файла со списком пациентов.
+ * Для сериализации созданных обьектов в xml и их десериализации.
+ * C помощью библиотеки DOM
  */
 public class XmlConverter {
     private static String fileName = "patient.xml";
@@ -25,9 +32,9 @@ public class XmlConverter {
 
     /*
      *  Конвертация(или по java-вски сериализация) java-обьектов в файл с расширением xml,
-     * C помощью библиотеки DOM.
+     * .
      * */
-    public static PatientList convertToXml() {
+    public static void convertToXml() {
         Document document = null;
         try {
             document = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
@@ -48,8 +55,8 @@ public class XmlConverter {
 
             Element fullName = document.createElement("name");
             fullName.setTextContent(patientList.getPatients().get(i).getFullName().get("Имя") + " "
-                    + patientList.getPatients().get(i).getFullName().get("Фамилия") + " "
-                    + patientList.getPatients().get(i).getFullName().get("Отчество"));
+                    + patientList.getPatients().get(i).getFullName().get("Отчество") + " "
+                    + patientList.getPatients().get(i).getFullName().get("Фамилия"));
             patient.appendChild(fullName);
 
             Element age = document.createElement("age");
@@ -64,8 +71,11 @@ public class XmlConverter {
             gender.setTextContent(String.valueOf(patientList.getPatients().get(i).getGender()));
             patient.appendChild(gender);
 
-            Element dateOfbirthday = document.createElement("dateOfbirthday");
-            dateOfbirthday.setTextContent(patientList.getPatients().get(i).getDateOfbirthday().toString());
+            Element dateOfbirthday = document.createElement("dateOfBirth");
+            SimpleDateFormat spd = new SimpleDateFormat("dd-MM-yyyy");
+            TimeZone timeZone = TimeZone.getTimeZone("UTC");
+            spd.setTimeZone(timeZone);
+            dateOfbirthday.setTextContent(spd.format(patientList.getPatients().get(i).getDateOfBirth()));
             patient.appendChild(dateOfbirthday);
 
             Element diseases = document.createElement("diseases");//Врачебное заключение(или диагноз)
@@ -93,9 +103,8 @@ public class XmlConverter {
             }
 
         }
-        return patientList;
-    }
 
+    }
 
 
     public static void convertFromXml() {
@@ -103,25 +112,48 @@ public class XmlConverter {
         try {
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = dbf.newDocumentBuilder();
-            docomunt = builder.parse("patient.xml");
-
-
+            docomunt = builder.parse(fileName);
         } catch (Exception ex) {
             System.out.println("ppc");
         }
+
+
         PatientList patientList = PatientList.newInstance();
         Element listElement = docomunt.getDocumentElement();
-        System.out.println(listElement.getTagName());
-
         NodeList peopleList = listElement.getElementsByTagName("Patient");
-        Node peopleNode = peopleList.item(0);
-        System.out.println(peopleNode.getTextContent());
-        NodeList dodo = peopleNode.getChildNodes();
-        Node nd = dodo.item(0);
-        Element element = (Element) nd;
-        String name = element.getElementsByTagName("name").item(0).getTextContent();
+        List<Patient> patients = new ArrayList<>();
+        for (int i = 0; i < peopleList.getLength(); i++) {
+            Node node = peopleList.item(i);
+            Element element = (Element) node;
+            int id = Integer.parseInt(peopleList.item(i).getAttributes().item(0).getNodeValue());
+            String name = element.getElementsByTagName("name").item(0).getTextContent();
+            //int age = Integer.parseInt(element.getElementsByTagName("age").item(0).getTextContent());
+            String complaints = element.getElementsByTagName("complaints").item(0).getTextContent();
+            String gender = element.getElementsByTagName("gender").item(0).getTextContent();
 
 
+            SimpleDateFormat spd = new SimpleDateFormat("dd-MM-yyyy");
+            TimeZone timeZone = TimeZone.getTimeZone("UTC");
+            spd.setTimeZone(timeZone);
+            Date date = null;
+            try {
+                date = spd.parse(element.getElementsByTagName("dateOfBirth").item(0).getTextContent());
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+            String diseases = element.getElementsByTagName("diseases").item(0).getTextContent();
+            Boolean isAlive = Boolean.valueOf(element.getElementsByTagName("isAlive").item(0).getTextContent());
+            String[] fullName = name.split(" ");
+            if (gender.equals("F")) {
+                patients.add(new Patient(id, fullName[0], fullName[1], fullName[2], complaints, Gender.F, date, diseases, isAlive));
+            } else if (gender.equals("M")) {
+                patients.add(new Patient(id, fullName[0], fullName[1], fullName[2], complaints, Gender.M, date, diseases, isAlive));
+            }
+
+
+        }
+        patientList.setPatients(patients);
     }
 
 

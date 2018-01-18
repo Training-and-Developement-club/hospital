@@ -1,4 +1,4 @@
-package TheDevineHospital.ParseFile;
+package TheDevineHospital.ParseFile.HospitalParser;
 
 import TheDevineHospital.EntityClasses.Doctors;
 import TheDevineHospital.EntityClasses.Hospital;
@@ -18,7 +18,7 @@ import java.util.List;
 
 public class DOM extends Parse {
     /*
-     *  STAX и SAX не стал использовать потому что XML - документ маленький.
+     *
      */
 
 

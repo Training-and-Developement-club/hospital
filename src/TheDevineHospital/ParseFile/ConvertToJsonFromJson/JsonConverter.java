@@ -6,8 +6,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
 
-//Конвертация обьекта в файл и обратно с помощью библы Jackson
-public class Converter {
+//Сериализация обьекта в файл и обратно с помощью библы Jackson
+public class JsonConverter {
     private static String fileName = "patient.json";
 
 
@@ -31,6 +31,6 @@ public class Converter {
     }
 
     public static void setFileName(String fileName) {
-        Converter.fileName = fileName;
+        JsonConverter.fileName = fileName;
     }
 }

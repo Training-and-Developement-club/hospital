@@ -2,10 +2,9 @@ package TheDevineHospital.SearchPackage;
 
 import TheDevineHospital.EntityClasses.Hospital;
 import TheDevineHospital.InputAndOutputText.HelpInput;
-import TheDevineHospital.TheCommandCenterOfThisProgramm.ControlCenter;
 
 /*
- *  This class contains search methods by name for DOCTORS!!!
+ *  Класс для поиска по имени
  */
 public class SearchDoctorsByName {
     public static void search(Hospital hospital) {

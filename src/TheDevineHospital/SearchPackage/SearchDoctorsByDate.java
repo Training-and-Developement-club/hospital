@@ -4,7 +4,6 @@ import TheDevineHospital.EntityClasses.Doctors;
 import TheDevineHospital.InputAndOutputText.HelpInput;
 
 import java.text.SimpleDateFormat;
-
 import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
@@ -24,11 +23,11 @@ public class SearchDoctorsByDate {
         int counter = 0;
         for(int i = 0;i<peopleList.size();i++){
             if(peopleList.get(i).getDateOfBirth().equals(date)){
-                System.out.println("По вашему запросу найден доктор " + peopleList.get(i).toString());
+                System.out.println("По вашему запросу есть совпадение " + peopleList.get(i).toString());
                 counter++;
             }
             if(i==peopleList.size()-1 && counter==0){
-                System.out.println("По вашему запросу докторов не найдено");
+                System.out.println("По вашему запросу никто не найден.");
             }
 
         }

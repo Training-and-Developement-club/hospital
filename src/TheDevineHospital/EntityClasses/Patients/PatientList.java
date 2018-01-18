@@ -39,7 +39,7 @@ public class PatientList {
         this.patients = patients;
     }
 
-    
+
 
     @Override
     public String toString() {
