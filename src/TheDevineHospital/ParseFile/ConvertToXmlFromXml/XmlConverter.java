@@ -4,7 +4,10 @@ import TheDevineHospital.EntityClasses.Patients.Patient;
 import TheDevineHospital.EntityClasses.Patients.PatientList;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
+import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.*;
@@ -20,12 +23,11 @@ public class XmlConverter {
     private static String fileName = "patient.xml";
 
 
-
     /*
      *  Конвертация(или по java-вски сериализация) java-обьектов в файл с расширением xml,
      * C помощью библиотеки DOM.
      * */
-    public static PatientList convertToXml(){
+    public static PatientList convertToXml() {
         Document document = null;
         try {
             document = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
@@ -34,12 +36,14 @@ public class XmlConverter {
         }
         PatientList patientList = PatientList.newInstance();
 
+
         Element patients = document.createElement("Patients");
         document.appendChild(patients);
 
-        for(int i = 0;i<patientList.getPatients().size();i++){
+
+        for (int i = 0; i < patientList.getPatients().size(); i++) {
             Element patient = document.createElement("Patient");
-            patient.setAttribute("ID",String.valueOf(patientList.getPatients().get(i).getId()));
+            patient.setAttribute("ID", String.valueOf(patientList.getPatients().get(i).getId()));
             patients.appendChild(patient);
 
             Element fullName = document.createElement("name");
@@ -73,7 +77,6 @@ public class XmlConverter {
             patient.appendChild(isAlive);
 
 
-
             Transformer transformer = null;
             try {
                 transformer = TransformerFactory.newInstance().newTransformer();
@@ -82,31 +85,42 @@ public class XmlConverter {
                 e.printStackTrace();
             }
             DOMSource source = new DOMSource(document);
-            StreamResult result = new StreamResult(new File(System.getProperty("user.dir") + File.separator + fileName ));
+            StreamResult result = new StreamResult(new File(System.getProperty("user.dir") + File.separator + fileName));
             try {
-                transformer.transform(source,result);
+                transformer.transform(source, result);
             } catch (TransformerException e) {
                 e.printStackTrace();
             }
 
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         return patientList;
     }
-    public static void convertFromXml(){
+
+
+
+    public static void convertFromXml() {
+        Document docomunt = null;
+        try {
+            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+            DocumentBuilder builder = dbf.newDocumentBuilder();
+            docomunt = builder.parse("patient.xml");
+
+
+        } catch (Exception ex) {
+            System.out.println("ppc");
+        }
+        PatientList patientList = PatientList.newInstance();
+        Element listElement = docomunt.getDocumentElement();
+        System.out.println(listElement.getTagName());
+
+        NodeList peopleList = listElement.getElementsByTagName("Patient");
+        Node peopleNode = peopleList.item(0);
+        System.out.println(peopleNode.getTextContent());
+        NodeList dodo = peopleNode.getChildNodes();
+        Node nd = dodo.item(0);
+        Element element = (Element) nd;
+        String name = element.getElementsByTagName("name").item(0).getTextContent();
+
 
     }
 

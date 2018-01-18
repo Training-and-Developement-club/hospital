@@ -39,7 +39,7 @@ public class ThreadParsing extends Thread {
             ControlCenter.setHospital(hospital);
 
 
-            System.out.println("Проснись мы отработали, результат:");
+            System.out.println("Проснись, мы отработали, результат:");
             Object.class.notify();
 
 

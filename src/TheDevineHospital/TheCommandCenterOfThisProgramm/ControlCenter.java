@@ -23,6 +23,7 @@ import static TheDevineHospital.SearchPackage.SearchDoctorsByName.search;
 public class ControlCenter {
     private static Hospital hospital;
     private static ControlCenter center;
+    private static PreparationForWork preparationForWork;
     private ControlCenter(){
 
     }
@@ -30,28 +31,10 @@ public class ControlCenter {
 
 
 
-    public static void controlCenter(ControlCenter cc) {
-
-
-        ThreadDonwload threadDonwload = new ThreadDonwload();
-        ThreadParsing threadParsing = new ThreadParsing();
-
-        threadDonwload.setThreadParsing(threadParsing);
-        threadParsing.setThreadDonwload(threadDonwload);
-        threadParsing.start();
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        threadDonwload.start();
-
-        try {
-            threadParsing.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        System.out.println(hospital.toString());//end
+    public void controlCenter(ControlCenter cc) {
+        preparationForWork = new PreparationForWork();
+        preparationForWork.downloadAndParsingHospital();
+        //preparationForWork.uploadPatientHistory();
 
         //***********************ConvertToXml***************************
         PatientList patientList = PatientList.newInstance();

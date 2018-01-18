@@ -12,7 +12,7 @@ public class Main {
 
     public static void main(String[] args) {
         ControlCenter cc = ControlCenter.newInstance();
-        ControlCenter.controlCenter(cc);
+        cc.controlCenter(cc);
 
         //********************xml create ****************************************************************
 

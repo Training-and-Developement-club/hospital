@@ -1,9 +1,9 @@
 package TheDevineHospital.EntityClasses.Pharmacy;
 
 public enum EnumDrug {
-    PENICILLIN,
-    FRACTUREPILLS,
-    COLDPILL,
-    POSIONPILLS,
-    PILLSFROMANGER
+    FRACTUREPILLS,//пилюли от переломов
+    COLDPILL,//пилюли от простуды
+    POSIONPILLS,//пилюли от отравления
+    PILLSFROMANGER, //пилюли от гнева
+
 }
