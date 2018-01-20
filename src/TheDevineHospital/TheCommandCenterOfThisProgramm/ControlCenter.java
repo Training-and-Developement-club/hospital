@@ -13,9 +13,7 @@ import TheDevineHospital.ParseFile.HospitalParser.Jackson;
 import TheDevineHospital.SearchPackage.SearchDoctorsByDate;
 import TheDevineHospital.SearchPackage.SearchPatientByDate;
 import TheDevineHospital.SearchPackage.SearchPatientByName;
-import TheDevineHospital.SortPackage.SortByDate;
-import TheDevineHospital.SortPackage.SortByName;
-import TheDevineHospital.SortPackage.SortBySurname;
+import TheDevineHospital.SortPackage.*;
 
 import java.io.File;
 import java.util.Collections;
@@ -36,28 +34,48 @@ public class ControlCenter {
 
 
     public void controlCenter(ControlCenter cc) {
-        //cc.automaticPrepareForWork();
-        cc.manualPrepareForWork();
+        selectionOfProgramPreparation();
 
         //***********************ConvertToXml***************************
         PatientList patientList = PatientList.getInstance();
-        patientList.getPatients().add(new Patient(patientList.getPatients().size() + 1, "Андрей", "Андреев", "Петоченко",
+        patientList.getPatients().add(new Patient(patientList.getPatients().size() + 1, "Тимур", "Андреев", "Ягнёнок",
                 "Болит колено", Gender.M,
                 HelpInput.inputDate(), "Ушиб колено"));
         patientList.getPatients().add(new Patient(patientList.getPatients().size() + 1, "Лиана", "Игоревна", "Старевич",
                 "Болит голень", Gender.F,
                 HelpInput.inputDate(), "Открытый перелом голени"));
-        //XmlConverter.convertToXml();
 
         cc.begginingOfWork();
 
     }
 
+    private void selectionOfProgramPreparation() {
+        System.out.println("Выберете способ подготовки программы к работе: " + "\n" +
+                "1)Автоматическая загрузки и распакова" + "\n" +
+                "2)Загрузить и распаковать вручную");
+        int input = 0;
+        input = HelpInput.inputNumber();
+
+        switch (input) {
+            case 1:
+                automaticPrepareForWork();
+                break;
+            case 2:
+                manualPrepareForWork();
+                break;
+            default:
+                System.err.println("Некорректный ввод, попробуйте снова:");
+                selectionOfProgramPreparation();
+                return;
+        }
+    }
+
     private void automaticPrepareForWork() {
         preparationForWork = PreparationForWork.newInstance();
         preparationForWork.downloadAndParsingHospital();
-        URLDownload.removeURLDownload();
         preparationForWork.uploadPatientHistory();
+        preparationForWork = null;
+        URLDownload.removeURLDownload();
         PreparationForWork.removePreparationForWork();
 
     }
@@ -124,20 +142,20 @@ public class ControlCenter {
                 } else return;
 
             default:
-                System.err.println("Некорректный ввод");
+                System.err.println("Некорректный ввод, попробуйте снова:");
                 try {
                     Thread.sleep(100);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                this.manualPrepareForWork();
+                this.functionalManualPrapareForWork(HelpInput.inputNumber());
                 break;
         }
     }
 
 
     private void begginingOfWork() {
-        System.out.println("Что вы хотите сделать с докторами? : " + "\n" +
+        System.out.println("Что вы хотите? : " + "\n" +
                 "1)Найти доктора" + "\n" +
                 "2)Сортировать докторов по..." + "\n" +
                 "3)Найти пациента" + "\n" +
@@ -161,7 +179,7 @@ public class ControlCenter {
             searchDoctorByArgument(input);
 
         } else if (input == 2) {
-            System.out.println("Произвести сортировку докторов по: " + "\n" +
+            System.out.println("Сортировать докторов по: " + "\n" +
                     "1)Имени" + "\n" +
                     "2)Фамилии" + "\n" +
                     "3)Дате рождения");
@@ -176,7 +194,7 @@ public class ControlCenter {
             searchPatientByArgument(input);
 
         } else if (input == 4) {
-            System.out.println("Произвести сортировку пациентов по: " + "\n" +
+            System.out.println("Сортировать пациентов по: " + "\n" +
                     "1)Имени" + "\n" +
                     "2)Фамилии" + "\n" +
                     "3)Дате рождения");
@@ -185,10 +203,16 @@ public class ControlCenter {
 
         } else if (input == 5) {
             printInfoAboutHospital();
-
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         } else if (input == 6) {
             //*********************************Ссылка на метод управления мини-игрой*********************************************
         } else if (input == 7) {
+            System.out.println("Сохраняем изминения...");
+            SaveInfo.saveAll();
             System.out.println("Программа завершает работу...");
             try {
                 Thread.sleep(1000);
@@ -196,6 +220,10 @@ public class ControlCenter {
                 e.printStackTrace();
             }
             System.exit(666);
+        } else {
+            System.err.println("Некорректный ввод, попробуйте снова:");
+            letsGoMassage(HelpInput.inputNumber());
+            return;
         }
         begginingOfWork();
     }
@@ -206,8 +234,31 @@ public class ControlCenter {
     }
 
     private void sortPatientByArgument(int input) {
-        Collections.sort(PatientList.getInstance().getPatients(),new SortByDate());
-        
+        if (PatientList.getInstance().getPatients() == null) {
+            //throw new MissingObject("Нет информации о пользователях, попробуйте их создать, затем сортируйте.");
+        } else {
+            switch (input) {
+                case 1:
+                    Collections.sort(PatientList.getInstance().getPatients(), new SortPatientByName());
+                    System.out.println("Результат сортировки:");
+                    System.out.println(PatientList.getInstance().toString());
+                    break;
+                case 2:
+                    Collections.sort(PatientList.getInstance().getPatients(), new SortPatientBySurname());
+                    System.out.println("Результат сортировки:");
+                    System.out.println(PatientList.getInstance().toString());
+                    break;
+                case 3:
+                    Collections.sort(PatientList.getInstance().getPatients(), new SortByDate());
+                    System.out.println("Результат сортировки:");
+                    System.out.println(PatientList.getInstance().toString());
+                    break;
+                default:
+                    System.err.println("Некорректный ввод, попробуйте снова:");
+                    sortPatientByArgument(HelpInput.inputNumber());
+                    break;
+            }
+        }
     }
 
 
@@ -220,7 +271,7 @@ public class ControlCenter {
                 SearchPatientByDate.search(PatientList.getInstance().getPatients());
                 break;
             default:
-                System.err.println("Некорректный ввод, попробуйте снова");
+                System.err.println("Некорректный ввод, попробуйте снова:");
                 searchPatientByArgument(HelpInput.inputNumber());
                 break;
 
@@ -236,11 +287,10 @@ public class ControlCenter {
                 SearchDoctorsByDate.search(hospital.getDoctors());
                 break;
             default:
-                System.err.println("Некорректный ввод, попробуйте снова");
+                System.err.println("Некорректный ввод, попробуйте снова:");
                 searchDoctorByArgument(HelpInput.inputNumber());
                 break;
         }
-
     }
 
 
@@ -262,7 +312,7 @@ public class ControlCenter {
                 System.out.println(hospital.getDoctors().toString());
                 break;
             default:
-                System.err.println("Некорректный ввод, попробуйте снова");
+                System.err.println("Некорректный ввод, попробуйте снова:");
                 try {
                     Thread.sleep(100);
                 } catch (InterruptedException e) {

@@ -1,12 +1,12 @@
 package TheDevineHospital.InputText;
 
 
+import TheDevineHospital.Exception.DateFormatException;
 import TheDevineHospital.Exception.FormatIntegerException;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
@@ -32,7 +32,7 @@ public class HelpInput {
     }
 
     //@return Целочисленное значение ввведённое с консоли
-    public static int inputNumber(){
+    public static int inputNumber() {
         String input = "";
         int result = 0;
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
@@ -45,7 +45,7 @@ public class HelpInput {
             result = Integer.parseInt(input);
         } catch (Exception e) {
             try {
-                throw new FormatIntegerException("Неверный формат введённых данных, введите целое число");
+                throw new FormatIntegerException("Неверный формат введённых данных, введите целое число:");
             } catch (FormatIntegerException e1) {
                 System.err.println(e1.getMessage());
             }
@@ -62,7 +62,7 @@ public class HelpInput {
     public static Date inputDate() {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Введите дату рождения человека в формате dd-MM-yyyy (25-12-2000)");
-
+        String input = "";
         SimpleDateFormat simpleDateFormat = null;
         Date date = null;
         try {
@@ -70,9 +70,18 @@ public class HelpInput {
             simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
             TimeZone timeZone = TimeZone.getTimeZone(TIMEZONE_UTC);
             simpleDateFormat.setTimeZone(timeZone);
-            date = simpleDateFormat.parse(bufferedReader.readLine());
-        } catch (ParseException e) {
-            e.printStackTrace();
+            input = bufferedReader.readLine();
+            try {
+                date = simpleDateFormat.parse(input);
+            } catch (Exception e) {
+                try {
+                    throw new DateFormatException("Неверный формат даты, введите по образцу:");
+                } catch (DateFormatException e1) {
+                    System.err.println(e1.getMessage());
+                    return inputDate();
+                }
+            }
+
         } catch (IOException e) {
             e.printStackTrace();
         }
