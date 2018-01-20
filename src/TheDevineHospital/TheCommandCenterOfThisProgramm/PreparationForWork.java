@@ -2,6 +2,7 @@ package TheDevineHospital.TheCommandCenterOfThisProgramm;
 
 import TheDevineHospital.DownloadFiles.Many_Threads.ThreadDonwload;
 import TheDevineHospital.DownloadFiles.Many_Threads.ThreadParsing;
+import TheDevineHospital.DownloadFiles.URLDownload;
 import TheDevineHospital.ParseFile.ConvertToXmlFromXml.XmlConverter;
 
 import java.io.File;
@@ -12,11 +13,13 @@ import java.io.File;
  * */
 public class PreparationForWork {
     private static PreparationForWork preparationForWork;
+    private static URLDownload urlDownload;
     private PreparationForWork() {
 
     }
-    public static PreparationForWork newInstance(){
-        if(preparationForWork==null){
+
+    public static PreparationForWork newInstance() {
+        if (preparationForWork == null) {
             preparationForWork = new PreparationForWork();
         }
         return preparationForWork;
@@ -54,5 +57,7 @@ public class PreparationForWork {
 
     }
 
-
+    public static void removePreparationForWork() {
+        PreparationForWork.preparationForWork = null;
+    }
 }

@@ -1,7 +1,7 @@
 package TheDevineHospital.SearchPackage;
 
 import TheDevineHospital.EntityClasses.Hospital;
-import TheDevineHospital.InputAndOutputText.HelpInput;
+import TheDevineHospital.InputText.HelpInput;
 
 /*
  *  Класс для поиска по имени

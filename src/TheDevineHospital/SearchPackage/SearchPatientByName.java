@@ -1,7 +1,7 @@
 package TheDevineHospital.SearchPackage;
 
 import TheDevineHospital.EntityClasses.Patients.PatientList;
-import TheDevineHospital.InputAndOutputText.HelpInput;
+import TheDevineHospital.InputText.HelpInput;
 
 public class SearchPatientByName {
     public static void search() {

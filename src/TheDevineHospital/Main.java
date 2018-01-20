@@ -5,6 +5,7 @@ import TheDevineHospital.TheCommandCenterOfThisProgramm.ControlCenter;
 
 /*
  * Класс мейн содержит метод "main" и используется только для запуска программы
+ * Ещё это главный поток
  */
 
 public class Main {

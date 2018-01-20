@@ -18,7 +18,7 @@ import java.util.List;
 
 public class DOM extends Parse {
     /*
-     *
+     *Десериализация xml документа в java-обьект
      */
 
 

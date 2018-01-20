@@ -1,7 +1,7 @@
 package TheDevineHospital.DownloadFiles;
 
 
-import TheDevineHospital.InputAndOutputText.HelpInput;
+import TheDevineHospital.InputText.HelpInput;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
 
 /*
  * Методы принимают ссылку на документ json\xml, проверяет её на соответствие шаблону  и загружает её на локальный диск.
- * @param urlDownload - используя паттерн проектирования синглтон создаём ссылку на класс и в дальнейшем используем только её
+ * @param urlDownload - единственный экземплячр класса
  * */
 public class URLDownload {
     public static final String LINK = "http://kiparo.ru/t/hospital.xml";
@@ -21,6 +21,8 @@ public class URLDownload {
     private static String hospitalJSON = "hospital.json";
     private static URLDownload urlDownload = new URLDownload();
 
+    private URLDownload() {
+    }
 
     public void downloadXml(String UrlAdress) {
         Pattern patternXML = Pattern.compile("^http://((.)+)\\.(xml)$");
@@ -38,8 +40,8 @@ public class URLDownload {
         } else {
             System.out.println("Некорректный формат ссылки на файл");
             System.out.println("Попробуйте ввести ссылку вручную:");
-            String gogoNewURL = HelpInput.inputString();
-            downloadXml(gogoNewURL);
+            String manualInputURL = HelpInput.inputString();
+            downloadXml(manualInputURL);
         }
 
 
@@ -61,11 +63,13 @@ public class URLDownload {
         } else {
             System.out.println("Некорректный формат ссылки на файл");
             System.out.println("Попробуйте ввести ссылку вручную:");
-            String gogoNewURL = HelpInput.inputString();
-            downloadJson(gogoNewURL);
+            String manualInputURL = HelpInput.inputString();
+            downloadJson(manualInputURL);
         }
     }
-
+    public static void removeURLDownload(){
+        urlDownload = null;
+    }
 
     public static String getHospitalXML() {
         return hospitalXML;

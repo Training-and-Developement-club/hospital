@@ -1,5 +1,7 @@
-package TheDevineHospital.InputAndOutputText;
+package TheDevineHospital.InputText;
 
+
+import TheDevineHospital.Exception.FormatIntegerException;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -17,7 +19,7 @@ public class HelpInput {
     private static Date date;
 
 
-    //@return Строку введённую на консоли
+    //@return Строку введённую с консоли
     public static String inputString() {
         String result = null;
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
@@ -30,14 +32,26 @@ public class HelpInput {
     }
 
     //@return Целочисленное значение ввведённое с консоли
-    public static int inputNumber() {
+    public static int inputNumber(){
+        String input = "";
         int result = 0;
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         try {
-            result = Integer.parseInt(bufferedReader.readLine());
+            input = bufferedReader.readLine();
         } catch (IOException e) {
             e.printStackTrace();
         }
+        try {
+            result = Integer.parseInt(input);
+        } catch (Exception e) {
+            try {
+                throw new FormatIntegerException("Неверный формат введённых данных, введите целое число");
+            } catch (FormatIntegerException e1) {
+                System.err.println(e1.getMessage());
+            }
+            result = inputNumber();
+        }
+
         return result;
     }
 

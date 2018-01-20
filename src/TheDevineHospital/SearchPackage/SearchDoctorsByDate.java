@@ -1,7 +1,7 @@
 package TheDevineHospital.SearchPackage;
 
 import TheDevineHospital.EntityClasses.Doctors;
-import TheDevineHospital.InputAndOutputText.HelpInput;
+import TheDevineHospital.InputText.HelpInput;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -11,6 +11,8 @@ import java.util.TimeZone;
 public class SearchDoctorsByDate {
     private static Date date;
     private static final  String  TIMEZONE_UTC  = "UTC";
+
+
 /*
 *  Принимает массив peopleList котоый содержит список Докторов и их дат рождения
 *         Принимает пользовательский поисковой ввод даты, затем сравнивает эту дату с датами рождения докторов.
