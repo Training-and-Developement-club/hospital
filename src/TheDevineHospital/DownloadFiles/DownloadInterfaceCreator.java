@@ -2,19 +2,20 @@ package TheDevineHospital.DownloadFiles;
 
 public interface DownloadInterfaceCreator {
     Downloader createUrlDownloader();
+    class XmlDownloadCreator implements DownloadInterfaceCreator{
 
-}
-class XmlDownloadCreator implements DownloadInterfaceCreator{
+        @Override
+        public Downloader createUrlDownloader() {
+            return new XmlDownloader();
+        }
+    }
+    class JsonDownloadCreator implements DownloadInterfaceCreator{
 
-    @Override
-    public Downloader createUrlDownloader() {
-        return new XmlDownloader();
+        @Override
+        public Downloader createUrlDownloader() {
+            return new JsonDownloader();
+        }
     }
 }
-class JsonDownloadCreator implements DownloadInterfaceCreator{
 
-    @Override
-    public Downloader createUrlDownloader() {
-        return new JsonDownloader();
-    }
-}
+

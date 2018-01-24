@@ -3,7 +3,9 @@ package TheDevineHospital.SortPackage;
 import TheDevineHospital.EntityClasses.Patients.Patient;
 
 import java.util.Comparator;
-
+/**
+ *  Сортировка пациентов по имени
+ */
 public class SortPatientByName implements Comparator<Patient> {
     @Override
     public int compare(Patient o1, Patient o2) {

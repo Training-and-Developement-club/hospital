@@ -7,12 +7,15 @@ import java.io.IOException;
 import java.net.URL;
 
 public interface Downloader {
+
     void urlDownload(String url);
 
 }
 
+
 class XmlDownloader implements Downloader {
     private String hospitalXML = "hospital.xml";
+
     @Override
     public void urlDownload(String xmlUrl) {
 
@@ -25,6 +28,8 @@ class XmlDownloader implements Downloader {
         System.out.println("xml-загружен.");
     }
 }
+
+
 
 class JsonDownloader implements Downloader {
     private String hospitalJSON = "hospital.json";

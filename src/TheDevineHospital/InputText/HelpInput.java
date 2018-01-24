@@ -12,7 +12,7 @@ import java.util.Date;
 import java.util.TimeZone;
 
 /*
- * This class contains all input operations.
+ * Класс содержит методы ввода: целого числа\строки\даты с консоли.
  */
 public class HelpInput {
     private static final String TIMEZONE_UTC = "UTC";

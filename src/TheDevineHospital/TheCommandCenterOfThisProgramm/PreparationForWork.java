@@ -2,18 +2,17 @@ package TheDevineHospital.TheCommandCenterOfThisProgramm;
 
 import TheDevineHospital.DownloadFiles.Many_Threads.ThreadDonwload;
 import TheDevineHospital.DownloadFiles.Many_Threads.ThreadParsing;
-import TheDevineHospital.DownloadFiles.URLDownload;
 import TheDevineHospital.ParseFile.ConvertToXmlFromXml.XmlConverter;
 
 import java.io.File;
 
-/*
+/**
  * Методам этого класса суждено подготовить программу к работе.
  * Загрузка информации о госпитале для дальнейшей манипуляции с ней
  * */
 public class PreparationForWork {
     private static PreparationForWork preparationForWork;
-    private static URLDownload urlDownload;
+
     private PreparationForWork() {
 
     }
@@ -48,11 +47,10 @@ public class PreparationForWork {
     }
 
     public void uploadPatientHistory() {
-        if (new File(XmlConverter.getFileName()).exists()) {
-            XmlConverter.convertFromXml();
-
-        } else {
-            return;
+        if (new File("patient.xml").exists()) {
+            XmlConverter xmlConverter = new XmlConverter();
+            xmlConverter.convertFromXml();
+            xmlConverter = null;
         }
 
     }

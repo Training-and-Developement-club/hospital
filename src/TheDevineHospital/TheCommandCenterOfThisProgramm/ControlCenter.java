@@ -1,6 +1,8 @@
 package TheDevineHospital.TheCommandCenterOfThisProgramm;
 
-import TheDevineHospital.DownloadFiles.URLDownload;
+import TheDevineHospital.DownloadFiles.ChainIOfResponsibility.JsonMatchChain;
+import TheDevineHospital.DownloadFiles.ChainIOfResponsibility.MatchString;
+import TheDevineHospital.DownloadFiles.ChainIOfResponsibility.XmlMatchChain;
 import TheDevineHospital.EntityClasses.Hospital;
 import TheDevineHospital.EntityClasses.Patients.Gender;
 import TheDevineHospital.EntityClasses.Patients.Patient;
@@ -20,13 +22,17 @@ import java.util.Collections;
 
 import static TheDevineHospital.SearchPackage.SearchDoctorsByName.search;
 
-/* Пользовательский интерфейс
- * Класс является одиночкой (Singlton)
+/** Пользовательский интерфейс
+ *  Класс является одиночкой (Singlton)
  * */
 public class ControlCenter {
+    public final String LINKXML = "http://kiparo.ru/t/hospital.xml";
+    public final String LINKJSON = "http://kiparo.ru/t/hospital.json";
     private static Hospital hospital;
     private static ControlCenter center;
-    private static PreparationForWork preparationForWork;
+    private PreparationForWork preparationForWork;
+    public static final String hospitalXML = "hospital.xml";
+    public static final String hospitalJSON = "hospital.json";
 
     private ControlCenter() {
 
@@ -37,15 +43,15 @@ public class ControlCenter {
         selectionOfProgramPreparation();
 
         //***********************ConvertToXml***************************
-        PatientList patientList = PatientList.getInstance();
+        /*PatientList patientList = PatientList.getInstance();
         patientList.getPatients().add(new Patient(patientList.getPatients().size() + 1, "Тимур", "Андреев", "Ягнёнок",
                 "Болит колено", Gender.M,
                 HelpInput.inputDate(), "Ушиб колено"));
         patientList.getPatients().add(new Patient(patientList.getPatients().size() + 1, "Лиана", "Игоревна", "Старевич",
                 "Болит голень", Gender.F,
-                HelpInput.inputDate(), "Открытый перелом голени"));
+                HelpInput.inputDate(), "Открытый перелом голени"));*/
 
-        cc.begginingOfWork();
+        begginingOfWork();
 
     }
 
@@ -75,7 +81,6 @@ public class ControlCenter {
         preparationForWork.downloadAndParsingHospital();
         preparationForWork.uploadPatientHistory();
         preparationForWork = null;
-        URLDownload.removeURLDownload();
         PreparationForWork.removePreparationForWork();
 
     }
@@ -109,29 +114,31 @@ public class ControlCenter {
     private void functionalManualPrapareForWork(int input) throws MissingFile, MissingObject {
         switch (input) {
             case 1:
-                URLDownload.getUrlDownload().downloadXml(URLDownload.LINK);
+                MatchString xmlMatchChain = new XmlMatchChain();
+                xmlMatchChain.checkProcess(LINKXML);
                 this.manualPrepareForWork();
                 break;
 
             case 2:
-                URLDownload.getUrlDownload().downloadJson(URLDownload.LINK1);
+                MatchString jsonMatchChain = new JsonMatchChain();
+                jsonMatchChain.checkProcess(LINKJSON);
                 this.manualPrepareForWork();
                 break;
 
             case 3:
-                if (new File(URLDownload.getHospitalXML()).exists()) {
-                    hospital = new DOM().parse(URLDownload.getHospitalXML());
+                if (new File(hospitalXML).exists()) {
+                    hospital = new DOM().parse(hospitalXML);
                 } else {
-                    throw new MissingFile("Файл " + URLDownload.getHospitalXML() + " не найден. Попробуйте загрузить файл заново.");
+                    throw new MissingFile("Файл " + hospitalXML + " не найден. Попробуйте загрузить файл заново.");
                 }
                 this.manualPrepareForWork();
                 break;
 
             case 4:
-                if (new File(URLDownload.getHospitalJSON()).exists()) {
-                    hospital = new Jackson().parse(URLDownload.getHospitalJSON());
+                if (new File(hospitalJSON).exists()) {
+                    hospital = new Jackson().parse(hospitalJSON);
                 } else {
-                    throw new MissingFile("Файл " + URLDownload.getHospitalJSON() + " не найден. Попробуйте загрузить файл заново.");
+                    throw new MissingFile("Файл " + hospitalJSON + " не найден. Попробуйте загрузить файл заново.");
                 }
                 this.manualPrepareForWork();
                 break;

@@ -5,7 +5,7 @@ import TheDevineHospital.EntityClasses.People;
 
 import java.util.Comparator;
 
-/*
+/**
  * Все мы знаем зачем нужен Компаратор
  * */
 public class SortBySurname implements Comparator<People> {

@@ -10,7 +10,6 @@ import java.util.Objects;
 
 public class Patient extends People {
     private Map<String,String> fullName = new HashMap<>();
-    private int age;
     private String complaints;
     private Gender gender;
     private String diseases; //Результат осмотра у доктора. (Заболевание пациента)
@@ -51,7 +50,6 @@ public class Patient extends People {
         return "Patient{" +
                 "id=" + id +
                 ", fullName=" + fullName +
-                ", age=" + age +
                 ", complaints='" + complaints + '\'' +
                 ", gender=" + gender +
                 ", dateOfBirth=" + dateOfBirth +
@@ -66,7 +64,6 @@ public class Patient extends People {
         if (!(o instanceof Patient)) return false;
         Patient patient = (Patient) o;
         return getId() == patient.getId() &&
-                getAge() == patient.getAge() &&
                 isAlive() == patient.isAlive() &&
                 Objects.equals(getFullName(), patient.getFullName()) &&
                 Objects.equals(getComplaints(), patient.getComplaints()) &&
@@ -78,7 +75,7 @@ public class Patient extends People {
     @Override
     public int hashCode() {
 
-        return Objects.hash(getId(), getFullName(), getAge(), getComplaints(), getGender(), getDateOfBirth(), getDiseases(), isAlive());
+        return Objects.hash(getId(), getFullName(), getComplaints(), getGender(), getDateOfBirth(), getDiseases(), isAlive());
     }
 
     @Override
@@ -128,14 +125,6 @@ public class Patient extends People {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
     }
 
     public String getComplaints() {

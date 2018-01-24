@@ -1,6 +1,5 @@
 package TheDevineHospital.TestByJUnit;
 
-import TheDevineHospital.DownloadFiles.URLDownload;
 import TheDevineHospital.EntityClasses.Hospital;
 import TheDevineHospital.ParseFile.HospitalParser.DOM;
 import TheDevineHospital.ParseFile.HospitalParser.Jackson;
@@ -22,9 +21,5 @@ public class TestParsing extends Assert {
 /*
 * Надо бы придумать что-то другое
 * */
-    @Test
-    public void parse(){
-        assertTrue(jackson.parse("hospital.json") != new Hospital());
-        assertEquals(new Hospital(),dom.parse(URLDownload.getHospitalJSON()));
-    }
+
 }

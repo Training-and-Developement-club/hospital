@@ -1,6 +1,5 @@
 package TheDevineHospital.DownloadFiles.Many_Threads;
 
-import TheDevineHospital.DownloadFiles.URLDownload;
 import TheDevineHospital.EntityClasses.Hospital;
 import TheDevineHospital.ParseFile.HospitalParser.DOM;
 import TheDevineHospital.ParseFile.HospitalParser.Jackson;
@@ -24,7 +23,7 @@ public class ThreadParsing extends Thread {
             }
 
             System.out.println("Обрабатываю xml");
-            Hospital hospital = new DOM().parse(URLDownload.getHospitalXML());
+            Hospital hospital = new DOM().parse("hospital.xml");
             Object.class.notify();
 
             try {
@@ -34,7 +33,7 @@ public class ThreadParsing extends Thread {
             }
 
             System.out.println("Обрабатываю json");
-            hospital = new Jackson().parse(URLDownload.getHospitalJSON());
+            hospital = new Jackson().parse("hospital.json");
             ControlCenter.setHospital(hospital);
 
 

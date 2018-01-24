@@ -7,7 +7,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
-
+/**
+ *  Поиск пациентов по дате рождения
+ */
 public class SearchPatientByDate {
 
     private static Date date;
@@ -25,7 +27,7 @@ public class SearchPatientByDate {
                 counter++;
             }
             if(i==peopleList.size()-1 && counter==0){
-                System.out.println("По вашему запросу никто не найден.");
+                System.out.println("Ни единой души.");
             }
 
         }

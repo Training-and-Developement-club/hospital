@@ -3,17 +3,11 @@ package TheDevineHospital.SearchPackage;
 import TheDevineHospital.EntityClasses.Hospital;
 import TheDevineHospital.InputText.HelpInput;
 
-/*
- *  Класс для поиска по имени
+/**
+ *  Поиск докторов по имени
  */
 public class SearchDoctorsByName {
     public static void search(Hospital hospital) {
-
-
-        if (hospital.equals(null)) {
-            System.err.println("Объект Hospital не найден");
-            return;
-        }
 
         System.out.println("Введите имя доктора:");
         String doc = HelpInput.inputString();
@@ -28,8 +22,6 @@ public class SearchDoctorsByName {
             }
 
         }
-
-
         if (registor == 0) {
             System.out.println("Совпадений не найдено");
         }

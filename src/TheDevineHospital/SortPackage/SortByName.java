@@ -1,12 +1,12 @@
 package TheDevineHospital.SortPackage;
 
-import TheDevineHospital.EntityClasses.Doctors;
+
 import TheDevineHospital.EntityClasses.People;
 
 import java.util.Comparator;
 
-/*
- *  Все мы знаем зачем нужен Компаратор
+/**
+ *  Сортировка пиплов по имени
  * */
 public class SortByName implements Comparator<People> {
 

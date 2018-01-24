@@ -2,16 +2,12 @@ package TheDevineHospital.SearchPackage;
 
 import TheDevineHospital.EntityClasses.Patients.PatientList;
 import TheDevineHospital.InputText.HelpInput;
-
+/**
+ *  Поиск пациентов по имени
+ */
 public class SearchPatientByName {
     public static void search() {
         PatientList patientList = PatientList.getInstance();
-
-        if (patientList.equals(null)) {
-            System.err.println("Объект Hospital не найден");
-            return;
-        }
-
         System.out.println("Введите имя пациента:");
         String doc = HelpInput.inputString();
         int registor = 0;

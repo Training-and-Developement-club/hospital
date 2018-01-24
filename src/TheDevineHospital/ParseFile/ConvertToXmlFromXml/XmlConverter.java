@@ -22,19 +22,16 @@ import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
 
-/*
+/**
  * Для сериализации созданных обьектов в xml и их десериализации.
  * C помощью библиотеки DOM
  */
 public class XmlConverter {
-    private static String fileName = "patient.xml";
+    private String fileName = "patient.xml";
 
 
-    /*
-     *  Конвертация(или по java-вски сериализация) java-обьектов в файл с расширением xml,
-     * .
-     * */
-    public static void convertToXml() {
+
+    public void convertToXml() {
         Document document = null;
         try {
             document = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
@@ -59,9 +56,7 @@ public class XmlConverter {
                     + patientList.getPatients().get(i).getFullName().get("Фамилия"));
             patient.appendChild(fullName);
 
-            Element age = document.createElement("age");
-            //***Сделать метод, который из даты рождения будет выводить возраст челика********************************************
-            patient.appendChild(age);
+
 
             Element complaints = document.createElement("complaints");//Симптомы (или жалобы человека)
             complaints.setTextContent(patientList.getPatients().get(i).getComplaints());
@@ -107,7 +102,7 @@ public class XmlConverter {
     }
 
 
-    public static void convertFromXml() {
+    public void convertFromXml() {
         Document docomunt = null;
         try {
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -127,7 +122,6 @@ public class XmlConverter {
             Element element = (Element) node;
             int id = Integer.parseInt(peopleList.item(i).getAttributes().item(0).getNodeValue());
             String name = element.getElementsByTagName("name").item(0).getTextContent();
-            //int age = Integer.parseInt(element.getElementsByTagName("age").item(0).getTextContent());
             String complaints = element.getElementsByTagName("complaints").item(0).getTextContent();
             String gender = element.getElementsByTagName("gender").item(0).getTextContent();
 
@@ -157,11 +151,11 @@ public class XmlConverter {
     }
 
 
-    public static String getFileName() {
+    public String getFileName() {
         return fileName;
     }
 
-    public static void setFileName(String fileName) {
-        XmlConverter.fileName = fileName;
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
     }
 }

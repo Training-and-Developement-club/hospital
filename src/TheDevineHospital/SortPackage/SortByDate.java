@@ -6,8 +6,8 @@ import TheDevineHospital.EntityClasses.People;
 import java.util.Comparator;
 import java.util.Date;
 
-/*
- *  Все мы знаем зачем нужен Компаратор
+/**
+ *  Сортировка пиплов(Докторов или пациентов) по дате
  * */
 public class SortByDate implements Comparator<People> {
     @Override

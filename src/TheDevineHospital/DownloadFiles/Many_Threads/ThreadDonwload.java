@@ -1,6 +1,8 @@
 package TheDevineHospital.DownloadFiles.Many_Threads;
 
-import TheDevineHospital.DownloadFiles.URLDownload;
+import TheDevineHospital.DownloadFiles.ChainIOfResponsibility.JsonMatchChain;
+import TheDevineHospital.DownloadFiles.ChainIOfResponsibility.MatchString;
+import TheDevineHospital.DownloadFiles.ChainIOfResponsibility.XmlMatchChain;
 
 public class ThreadDonwload extends Thread {
     private ThreadParsing threadParsing;
@@ -16,7 +18,8 @@ public class ThreadDonwload extends Thread {
 
 
         synchronized (Object.class) {
-            URLDownload.getUrlDownload().downloadXml(URLDownload.LINK);
+            MatchString xmlMatchChain = new XmlMatchChain();
+            xmlMatchChain.checkProcess("http://kiparo.ru/t/hospital.xml");
             Object.class.notify();
 
             try {
@@ -24,8 +27,8 @@ public class ThreadDonwload extends Thread {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-
-            URLDownload.getUrlDownload().downloadJson(URLDownload.LINK1);
+            MatchString jsonMatchChain = new JsonMatchChain();
+            jsonMatchChain.checkProcess("http://kiparo.ru/t/hospital.json");
             Object.class.notify();
 
         }
