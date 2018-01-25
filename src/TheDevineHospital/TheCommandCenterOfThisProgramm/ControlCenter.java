@@ -42,6 +42,8 @@ public class ControlCenter {
 
     public void controlCenter(ControlCenter cc) {
         selectionOfProgramPreparation();
+        PreparationForWork.newInstance().uploadPatientHistory();
+        preparationForWork = PreparationForWork.removePreparationForWork();
         begginingOfWork();
     }
 
@@ -69,11 +71,8 @@ public class ControlCenter {
     private void automaticPrepareForWork() {
         preparationForWork = PreparationForWork.newInstance();
         preparationForWork.downloadAndParsingHospital();
-        preparationForWork.uploadPatientHistory();
-        preparationForWork = PreparationForWork.removePreparationForWork();
 
-
-    }
+        }
 
     private void manualPrepareForWork() {
         System.out.println("Ваши первые действия: " + "\n" +
@@ -152,6 +151,7 @@ public class ControlCenter {
                 this.functionalManualPrapareForWork(HelpInput.inputNumber());
                 break;
         }
+
     }
 
 
