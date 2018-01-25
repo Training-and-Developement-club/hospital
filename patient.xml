@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Patients>
+    <Patient ID="1">
+        <name>Тимур Андреев Ягнёнок</name>
+        <complaints>Болит колено</complaints>
+        <gender>M</gender>
+        <dateOfBirth>12-12-2012</dateOfBirth>
+        <diseases>Ушиб колено</diseases>
+        <isAlive>true</isAlive>
+    </Patient>
+    <Patient ID="2">
+        <name>Лиана Игоревна Старевич</name>
+        <complaints>Болит голень</complaints>
+        <gender>F</gender>
+        <dateOfBirth>01-01-2006</dateOfBirth>
+        <diseases>Открытый перелом голени</diseases>
+        <isAlive>true</isAlive>
+    </Patient>
+    <Patient ID="3">
+        <name>Арина Анатольевна Трыньтрава</name>
+        <complaints>Тошнота</complaints>
+        <gender>F</gender>
+        <dateOfBirth>11-11-1999</dateOfBirth>
+        <diseases>Непереносимость лактозы</diseases>
+        <isAlive>true</isAlive>
+    </Patient>
+</Patients>
