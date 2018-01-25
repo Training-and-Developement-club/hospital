@@ -2,7 +2,9 @@ package TheDevineHospital.EntityClasses;
 
 import java.util.List;
 import java.util.Objects;
-
+/**
+ * Обьект больница.
+ * */
 public class Hospital {
     private String name;
     private String location;

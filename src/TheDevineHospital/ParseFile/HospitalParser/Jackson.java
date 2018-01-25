@@ -6,8 +6,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.io.IOException;
 
-/*
- *  Парсинг для титанических json-файлов
+/**
+ * Десериализация json документа в java-обьект(Doctors) библиотекай Jackson
  * */
 public class Jackson extends Parse {
 

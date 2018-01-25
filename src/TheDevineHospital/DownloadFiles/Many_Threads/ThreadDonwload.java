@@ -3,7 +3,9 @@ package TheDevineHospital.DownloadFiles.Many_Threads;
 import TheDevineHospital.DownloadFiles.ChainIOfResponsibility.JsonMatchChain;
 import TheDevineHospital.DownloadFiles.ChainIOfResponsibility.MatchString;
 import TheDevineHospital.DownloadFiles.ChainIOfResponsibility.XmlMatchChain;
-
+/**
+ * Класс потока загрузки
+ * */
 public class ThreadDonwload extends Thread {
     private ThreadParsing threadParsing;
 
@@ -24,6 +26,11 @@ public class ThreadDonwload extends Thread {
 
             try {
                 Object.class.wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            try {
+                Thread.sleep(500);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

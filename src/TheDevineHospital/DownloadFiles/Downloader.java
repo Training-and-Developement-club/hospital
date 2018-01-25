@@ -5,7 +5,9 @@ import org.apache.commons.io.FileUtils;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-
+/**
+ * Downloader определяет общий интерфейс обьектов, которые может произвести Фабрика и его подклассы.
+* */
 public interface Downloader {
 
     void urlDownload(String url);

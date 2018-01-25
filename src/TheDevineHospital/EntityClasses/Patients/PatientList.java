@@ -6,8 +6,9 @@ import java.util.Objects;
 
 
 
-/*
-*  Здесь, в (List<Patient> patients) хранится список всех пациентов, которые уже есть и которых вы ещё не добавили)
+/**
+*  Здесь, в (List<Patient> patients) хранится список всех пациентов, которые уже есть и которых предстоит добавить.
+ * Объект является одиночкой(Singleton)
 */
 public class PatientList {
     private List<Patient> patients = new ArrayList<>();
@@ -16,7 +17,7 @@ public class PatientList {
 
     }
 
-    /*
+    /**
     * @return Единственный нужный обьект пациентов.
     * */
     public static PatientList getInstance(){
@@ -25,8 +26,6 @@ public class PatientList {
             }
         return patientList;
     }
-
-
 
 
 

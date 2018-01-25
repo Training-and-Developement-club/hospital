@@ -5,11 +5,10 @@ import TheDevineHospital.EntityClasses.People;
 
 import java.util.Comparator;
 import java.util.Date;
-
 /**
- *  Сортировка пиплов(Докторов или пациентов) по дате
+ * Интерфейс для упорядочивания обьектов класса People по дате рождения
  * */
-public class SortByDate implements Comparator<People> {
+public class SortPeopleByDate implements Comparator<People> {
     @Override
     public int compare(People o1, People o2) {
         Date date = o1.getDateOfBirth();

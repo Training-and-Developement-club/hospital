@@ -6,9 +6,9 @@ import TheDevineHospital.EntityClasses.People;
 import java.util.Comparator;
 
 /**
- *  Сортировка пиплов по имени
+ * Интерфейс для упорядочивания обьектов класса People по имени
  * */
-public class SortByName implements Comparator<People> {
+public class SortDoctorsByName implements Comparator<People> {
 
 
     @Override

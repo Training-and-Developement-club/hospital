@@ -13,9 +13,9 @@ public class SearchDoctorsByDate {
     private static final  String  TIMEZONE_UTC  = "UTC";
 
 
-/*
-*  Принимает массив peopleList котоый содержит список Докторов и их дат рождения
-*         Принимает пользовательский поисковой ввод даты, затем сравнивает эту дату с датами рождения докторов.
+/**
+*  @param peopleList содержит лист обьектов Doctors
+ *                    Метод  предназначен для поиска докторов в листе по дате рождения.
 * */
     public static void search(List<Doctors> peopleList) {
         date = HelpInput.inputDate();

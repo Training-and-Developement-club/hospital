@@ -58,7 +58,7 @@ public class XmlConverter {
 
 
 
-            Element complaints = document.createElement("complaints");//Симптомы (или жалобы человека)
+            Element complaints = document.createElement("complaints");
             complaints.setTextContent(patientList.getPatients().get(i).getComplaints());
             patient.appendChild(complaints);
 
@@ -85,7 +85,7 @@ public class XmlConverter {
             Transformer transformer = null;
             try {
                 transformer = TransformerFactory.newInstance().newTransformer();
-                transformer.setOutputProperty(OutputKeys.INDENT, "yes");//команда для сохранения глаз смотрящего в XML(форматирование короче)
+                transformer.setOutputProperty(OutputKeys.INDENT, "yes");
             } catch (TransformerConfigurationException e) {
                 e.printStackTrace();
             }
@@ -109,7 +109,7 @@ public class XmlConverter {
             DocumentBuilder builder = dbf.newDocumentBuilder();
             docomunt = builder.parse(fileName);
         } catch (Exception ex) {
-            System.out.println("ppc");
+            System.out.println("fail");
         }
 
 

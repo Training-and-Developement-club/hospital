@@ -6,7 +6,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
-
+/**
+ * Обьект Доктор
+* */
 public class Doctors extends People {
     private int id;
     private String name;

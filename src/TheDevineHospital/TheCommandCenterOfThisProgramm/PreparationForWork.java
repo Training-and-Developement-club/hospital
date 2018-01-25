@@ -9,7 +9,7 @@ import java.io.File;
 /**
  * Методам этого класса суждено подготовить программу к работе.
  * Загрузка информации о госпитале для дальнейшей манипуляции с ней
- * */
+ */
 public class PreparationForWork {
     private static PreparationForWork preparationForWork;
 
@@ -32,17 +32,20 @@ public class PreparationForWork {
         threadParsing.setThreadDonwload(threadDonwload);
 
         threadParsing.start();
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         threadDonwload.start();
         try {
             threadParsing.join();
             threadDonwload.join();
         } catch (InterruptedException e) {
             e.printStackTrace();
+        }
+        checkAutomaticalPreparation("Данные готовы, запуск программы");
+    }
+
+    public void checkAutomaticalPreparation(String massage){
+        if(new File("hospital.xml").exists() && new File("hospital.json").exists()){
+            ControlCenter.getInstance().imitationOfAGoodProgramm(massage);
+
         }
     }
 
@@ -55,7 +58,8 @@ public class PreparationForWork {
 
     }
 
-    public static void removePreparationForWork() {
-        PreparationForWork.preparationForWork = null;
+    public static PreparationForWork removePreparationForWork() {
+        preparationForWork = null;
+        return null;
     }
 }

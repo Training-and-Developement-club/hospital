@@ -22,17 +22,18 @@ import java.util.Collections;
 
 import static TheDevineHospital.SearchPackage.SearchDoctorsByName.search;
 
-/** Пользовательский интерфейс
- *  Класс является одиночкой (Singlton)
- * */
+/**
+ * Пользовательский интерфейс
+ * Класс является одиночкой (Singleton)
+ */
 public class ControlCenter {
     public final String LINKXML = "http://kiparo.ru/t/hospital.xml";
     public final String LINKJSON = "http://kiparo.ru/t/hospital.json";
     private static Hospital hospital;
     private static ControlCenter center;
     private PreparationForWork preparationForWork;
-    public static final String hospitalXML = "hospital.xml";
-    public static final String hospitalJSON = "hospital.json";
+    private static final String hospitalXML = "hospital.xml";
+    private static final String hospitalJSON = "hospital.json";
 
     private ControlCenter() {
 
@@ -41,18 +42,7 @@ public class ControlCenter {
 
     public void controlCenter(ControlCenter cc) {
         selectionOfProgramPreparation();
-
-        //***********************ConvertToXml***************************
-        /*PatientList patientList = PatientList.getInstance();
-        patientList.getPatients().add(new Patient(patientList.getPatients().size() + 1, "Тимур", "Андреев", "Ягнёнок",
-                "Болит колено", Gender.M,
-                HelpInput.inputDate(), "Ушиб колено"));
-        patientList.getPatients().add(new Patient(patientList.getPatients().size() + 1, "Лиана", "Игоревна", "Старевич",
-                "Болит голень", Gender.F,
-                HelpInput.inputDate(), "Открытый перелом голени"));*/
-
         begginingOfWork();
-
     }
 
     private void selectionOfProgramPreparation() {
@@ -64,6 +54,7 @@ public class ControlCenter {
 
         switch (input) {
             case 1:
+                imitationOfAGoodProgramm("Начало автоматической подготовки данных");
                 automaticPrepareForWork();
                 break;
             case 2:
@@ -72,7 +63,6 @@ public class ControlCenter {
             default:
                 System.err.println("Некорректный ввод, попробуйте снова:");
                 selectionOfProgramPreparation();
-                return;
         }
     }
 
@@ -80,8 +70,8 @@ public class ControlCenter {
         preparationForWork = PreparationForWork.newInstance();
         preparationForWork.downloadAndParsingHospital();
         preparationForWork.uploadPatientHistory();
-        preparationForWork = null;
-        PreparationForWork.removePreparationForWork();
+        preparationForWork = PreparationForWork.removePreparationForWork();
+
 
     }
 
@@ -146,7 +136,11 @@ public class ControlCenter {
             case 5:
                 if (hospital == null) {
                     throw new MissingObject("Обьект больницы отсутствует, загрузите и десиреализуйте больничку xml или json");
-                } else return;
+                } else {
+                    imitationOfAGoodProgramm("Данные готовы, запуск программы");
+                    return;
+                }
+
 
             default:
                 System.err.println("Некорректный ввод, попробуйте снова:");
@@ -162,14 +156,14 @@ public class ControlCenter {
 
 
     private void begginingOfWork() {
-        System.out.println("Что вы хотите? : " + "\n" +
+        System.out.println("Что вы хотите?(Введите номер строки) : " + "\n" +
                 "1)Найти доктора" + "\n" +
                 "2)Сортировать докторов по..." + "\n" +
                 "3)Найти пациента" + "\n" +
                 "4)Сортировать пациентов по..." + "\n" +
                 "5)Показать информацию о госпитале" + "\n" +
-                "6)Поиграем? :D" + "\n" +
-                "7).EXIT");
+                "6)Создать пациента" + "\n" +
+                "7)Выход из программы");
         int input = 0;
         input = HelpInput.inputNumber();
         letsGoMassage(input);
@@ -216,7 +210,12 @@ public class ControlCenter {
                 e.printStackTrace();
             }
         } else if (input == 6) {
-            //*********************************Ссылка на метод управления мини-игрой*********************************************
+            System.err.println("Функционал по заданной команде находится в процессе разработки");
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         } else if (input == 7) {
             System.out.println("Сохраняем изминения...");
             SaveInfo.saveAll();
@@ -241,31 +240,29 @@ public class ControlCenter {
     }
 
     private void sortPatientByArgument(int input) {
-        if (PatientList.getInstance().getPatients() == null) {
-            //throw new MissingObject("Нет информации о пользователях, попробуйте их создать, затем сортируйте.");
-        } else {
-            switch (input) {
-                case 1:
-                    Collections.sort(PatientList.getInstance().getPatients(), new SortPatientByName());
-                    System.out.println("Результат сортировки:");
-                    System.out.println(PatientList.getInstance().toString());
-                    break;
-                case 2:
-                    Collections.sort(PatientList.getInstance().getPatients(), new SortPatientBySurname());
-                    System.out.println("Результат сортировки:");
-                    System.out.println(PatientList.getInstance().toString());
-                    break;
-                case 3:
-                    Collections.sort(PatientList.getInstance().getPatients(), new SortByDate());
-                    System.out.println("Результат сортировки:");
-                    System.out.println(PatientList.getInstance().toString());
-                    break;
-                default:
-                    System.err.println("Некорректный ввод, попробуйте снова:");
-                    sortPatientByArgument(HelpInput.inputNumber());
-                    break;
-            }
+
+        switch (input) {
+            case 1:
+                Collections.sort(PatientList.getInstance().getPatients(), new SortPatientByName());
+                System.out.println("Результат сортировки:");
+                System.out.println(PatientList.getInstance().toString());
+                break;
+            case 2:
+                Collections.sort(PatientList.getInstance().getPatients(), new SortPatientBySurname());
+                System.out.println("Результат сортировки:");
+                System.out.println(PatientList.getInstance().toString());
+                break;
+            case 3:
+                Collections.sort(PatientList.getInstance().getPatients(), new SortPeopleByDate());
+                System.out.println("Результат сортировки:");
+                System.out.println(PatientList.getInstance().toString());
+                break;
+            default:
+                System.err.println("Некорректный ввод, попробуйте снова:");
+                sortPatientByArgument(HelpInput.inputNumber());
+                break;
         }
+
     }
 
 
@@ -304,17 +301,17 @@ public class ControlCenter {
     private void sortDoctorsByArgument(int input) {
         switch (input) {
             case 1:
-                Collections.sort(hospital.getDoctors(), new SortByName());
+                Collections.sort(hospital.getDoctors(), new SortDoctorsByName());
                 System.out.println("Результат сортировки:");
                 System.out.println(hospital.getDoctors().toString());
                 break;
             case 2:
-                Collections.sort(hospital.getDoctors(), new SortBySurname());
+                Collections.sort(hospital.getDoctors(), new SortDoctorsBySurname());
                 System.out.println("Результат сортировки:");
                 System.out.println(hospital.getDoctors().toString());
                 break;
             case 3:
-                Collections.sort(hospital.getDoctors(), new SortByDate());
+                Collections.sort(hospital.getDoctors(), new SortPeopleByDate());
                 System.out.println("Результат сортировки:");
                 System.out.println(hospital.getDoctors().toString());
                 break;
@@ -330,6 +327,38 @@ public class ControlCenter {
         }
     }
 
+    public void imitationOfAGoodProgramm(String massage) {
+        System.out.print(massage);
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                StringBuffer sb = new StringBuffer(".");
+                boolean condition = true;
+                int totalOperations = 0;
+                while (condition) {
+                    totalOperations++;
+                    try {
+                        Thread.sleep(700);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    System.out.print(sb);
+                    if (totalOperations == 4) {
+                        condition = false;
+                    }
+
+                }
+
+                System.out.println();
+            }
+        });
+        thread.start();
+        try {
+            thread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 
     public static ControlCenter getInstance() {
         if (center == null) {
