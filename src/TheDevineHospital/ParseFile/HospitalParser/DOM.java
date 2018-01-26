@@ -18,7 +18,7 @@ import java.util.List;
 
 public class DOM extends Parse {
     /**
-     *  Десериализация xml документа в java-обьект(Doctors) библиотекай DOM
+     * Десериализация xml документа в java-обьект(Doctors) библиотекай DOM
      */
 
 
@@ -45,17 +45,16 @@ public class DOM extends Parse {
         hospital.setName(node.getTextContent());
 
 
-
         nodeList = root.getElementsByTagName("location");
         Node node1 = nodeList.item(0);
         hospital.setLocation(node1.getTextContent());
 
 
         NodeList doctorsList = root.getElementsByTagName("doctors");
-        List<Doctors>doctors = new ArrayList<>();
-        for(int i = 0;i<doctorsList.getLength();i++){
+        List<Doctors> doctors = new ArrayList<>();
+        for (int i = 0; i < doctorsList.getLength(); i++) {
             Node node2 = doctorsList.item(i);
-            Element element = (Element)node2;
+            Element element = (Element) node2;
             doctors.add(new Doctors());
             doctors.get(i).setId(Integer.parseInt(element.getElementsByTagName("id").item(0).getTextContent()));
             doctors.get(i).setName(element.getElementsByTagName("name").item(0).getTextContent());
@@ -69,19 +68,19 @@ public class DOM extends Parse {
             }
             doctors.get(i).setDateOfBirth(date);
             doctors.get(i).setYearEperience(Integer.parseInt(element.getElementsByTagName("yearEperience").item(0).getTextContent()));
-            List<String>type = new ArrayList<>();
-            for(int j = 0;j<element.getElementsByTagName("type").getLength();j++){
-               type.add(element.getElementsByTagName("type").item(j).getTextContent());
+            List<String> type = new ArrayList<>();
+            for (int j = 0; j < element.getElementsByTagName("type").getLength(); j++) {
+                type.add(element.getElementsByTagName("type").item(j).getTextContent());
 
             }
             doctors.get(i).setType(type);
             doctors.get(i).setVisible(Boolean.valueOf(element.getElementsByTagName("visible").item(0).getTextContent()));
 
-            }
+        }
 
 
         hospital.setDoctors(doctors);
-        System.out.println(hospital.toString());
+        System.out.println();
 
         return hospital;
 

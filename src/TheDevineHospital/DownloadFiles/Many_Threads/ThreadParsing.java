@@ -4,9 +4,10 @@ import TheDevineHospital.EntityClasses.Hospital;
 import TheDevineHospital.ParseFile.HospitalParser.DOM;
 import TheDevineHospital.ParseFile.HospitalParser.Jackson;
 import TheDevineHospital.TheCommandCenterOfThisProgramm.ControlCenter;
+
 /**
  * Класс потока десериализации
- *  */
+ */
 public class ThreadParsing extends Thread {
     private ThreadDonwload threadDonwload;
 

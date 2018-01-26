@@ -42,7 +42,7 @@ public class PatientList {
 
     @Override
     public String toString() {
-        return "PatientList{" +
+        return "Список пациентов {" +
                 "patients=" + patients +
                 '}';
     }

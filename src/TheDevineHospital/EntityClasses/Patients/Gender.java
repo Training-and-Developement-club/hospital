@@ -2,7 +2,7 @@ package TheDevineHospital.EntityClasses.Patients;
 
 import com.google.gson.annotations.SerializedName;
 /**
- * Енум-ы - пол(а) пациентов.
+ * Enum - пол(а) пациентов.
  * */
 public enum Gender{
     @SerializedName("1")

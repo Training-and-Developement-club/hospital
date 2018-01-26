@@ -4,8 +4,6 @@ import TheDevineHospital.DownloadFiles.ChainIOfResponsibility.JsonMatchChain;
 import TheDevineHospital.DownloadFiles.ChainIOfResponsibility.MatchString;
 import TheDevineHospital.DownloadFiles.ChainIOfResponsibility.XmlMatchChain;
 import TheDevineHospital.EntityClasses.Hospital;
-import TheDevineHospital.EntityClasses.Patients.Gender;
-import TheDevineHospital.EntityClasses.Patients.Patient;
 import TheDevineHospital.EntityClasses.Patients.PatientList;
 import TheDevineHospital.Exception.MissingFile;
 import TheDevineHospital.Exception.MissingObject;
@@ -40,7 +38,7 @@ public class ControlCenter {
     }
 
 
-    public void controlCenter(ControlCenter cc) {
+    public void controlCenter() {
         selectionOfProgramPreparation();
         PreparationForWork.newInstance().uploadPatientHistory();
         preparationForWork = PreparationForWork.removePreparationForWork();
@@ -72,7 +70,7 @@ public class ControlCenter {
         preparationForWork = PreparationForWork.newInstance();
         preparationForWork.downloadAndParsingHospital();
 
-        }
+    }
 
     private void manualPrepareForWork() {
         System.out.println("Ваши первые действия: " + "\n" +
