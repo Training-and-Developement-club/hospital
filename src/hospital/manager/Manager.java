@@ -357,4 +357,12 @@ public class Manager {
     public static void setHospital(Hospital hospital) {
         Manager.hospital = hospital;
     }
+
+    public static String getHospitalXML() {
+        return hospitalXML;
+    }
+
+    public static String getHospitalJSON() {
+        return hospitalJSON;
+    }
 }
