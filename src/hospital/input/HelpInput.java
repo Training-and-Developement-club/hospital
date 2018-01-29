@@ -11,15 +11,16 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
 
-/*
+/**
  * Класс содержит методы ввода: целого числа\строки\даты с консоли.
  */
 public class HelpInput {
     private static final String TIMEZONE_UTC = "UTC";
     private static Date date;
 
-
-    //@return Строку введённую с консоли
+    /**
+     * @return Строку введённую с консоли/
+     */
     public static String inputString() {
         String result = null;
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
@@ -31,7 +32,9 @@ public class HelpInput {
         return result;
     }
 
-    //@return Целочисленное значение ввведённое с консоли
+    /**
+     * @return Целочисленное значение ввведённое с консоли
+     */
     public static int inputNumber() {
         String input = "";
         int result = 0;
@@ -56,9 +59,11 @@ public class HelpInput {
     }
 
 
-    /*Принимает пользовательский ввод даты и возвращаем её в метод для последующих операций.
+    /**
+     * Принимает пользовательский ввод даты и возвращаем её в метод для последующих операций.
+     *
      * @return Дату в UTC
-     * */
+     */
     public static Date inputDate() {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Введите дату рождения человека в формате dd-MM-yyyy (25-12-2000)");

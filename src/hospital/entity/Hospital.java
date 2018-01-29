@@ -13,7 +13,7 @@ public class Hospital {
 
     @Override
     public String toString() {
-        return "Информация о госпитале {" +
+        return "Информация о госпитале:  " + "\n" + "{" +
                 "Госпиталь имени - '" + name + '\'' +
                 ", место обитания'" + location + '\'' + "\n" +
                 ", " + doctors +

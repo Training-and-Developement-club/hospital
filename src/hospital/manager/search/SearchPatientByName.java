@@ -10,20 +10,17 @@ public class SearchPatientByName {
         PatientList patientList = PatientList.getInstance();
         System.out.println("Введите имя пациента:");
         String doc = HelpInput.inputString();
-        int registor = 0;
+        int total = 0;
         for (int i = 0; i < patientList.getPatients().size(); i++) {
-            if (doc.equalsIgnoreCase(patientList.getPatients().get(i).getName())) {
-                System.out.println("Найден пациент - " + patientList.getPatients().get(i).toString());
-                registor++;
-            } else if (patientList.getPatients().get(i).getName().toLowerCase().contains(doc.toLowerCase())) {
-                System.out.println("Есть совпадение - " + patientList.getPatients().get(i).toString());
-                registor++;
+            if((patientList.getPatients().get(i).getFullName().containsValue(doc))){
+                System.out.println("Найдено совпадение " + patientList.getPatients().get(i).toString());
+                total++;
             }
 
         }
 
 
-        if (registor == 0) {
+        if (total == 0) {
             System.out.println("Совпадений не найдено");
         }
 

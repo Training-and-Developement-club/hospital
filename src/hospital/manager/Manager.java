@@ -49,7 +49,7 @@ public class Manager {
 
     private void selectionOfProgramPreparation() {
         System.out.println("Выберете способ подготовки программы к работе: " + "\n" +
-                "1)Автоматическая загрузки и распакова" + "\n" +
+                "1)Автоматическая загрузка и распакова" + "\n" +
                 "2)Загрузить и распаковать вручную");
         int input = 0;
         input = HelpInput.inputNumber();

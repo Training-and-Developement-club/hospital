@@ -69,7 +69,7 @@ public class Patient extends People {
 
     @Override
     public String toString() {
-        return "\t" + "Patient{" +
+        return "\t" + "Пациент{" +
                 fullName +
                 ", симптомы '" + complaints + '\'' +
                 ", возраст: " + age +

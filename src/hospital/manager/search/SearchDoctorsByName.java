@@ -11,18 +11,18 @@ public class SearchDoctorsByName {
 
         System.out.println("Введите имя доктора:");
         String doc = HelpInput.inputString();
-        int registor = 0;
+        int total = 0;
         for (int i = 0; i < hospital.getDoctors().size(); i++) {
             if (doc.equalsIgnoreCase(hospital.getDoctors().get(i).getName())) {
                 System.out.println("Найден доктор - " + hospital.getDoctors().get(i).toString());
-                registor++;
+                total++;
             } else if (hospital.getDoctors().get(i).getName().toLowerCase().contains(doc.toLowerCase())) {
                 System.out.println("Есть совпадение - " + hospital.getDoctors().get(i).toString());
-                registor++;
+                total++;
             }
 
         }
-        if (registor == 0) {
+        if (total == 0) {
             System.out.println("Совпадений не найдено");
         }
 
