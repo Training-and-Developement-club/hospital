@@ -15,7 +15,7 @@ public class SearchPatientByName {
             if (doc.equalsIgnoreCase(patientList.getPatients().get(i).getName())) {
                 System.out.println("Найден пациент - " + patientList.getPatients().get(i).toString());
                 registor++;
-            } else if (patientList.getPatients().get(i).getName().contains(doc)) {
+            } else if (patientList.getPatients().get(i).getName().toLowerCase().contains(doc.toLowerCase())) {
                 System.out.println("Есть совпадение - " + patientList.getPatients().get(i).toString());
                 registor++;
             }

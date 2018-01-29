@@ -9,9 +9,9 @@ import java.io.IOException;
 /**
  * Десериализация json документа в java-обьект(Doctors) библиотекай Jackson
  * */
-public class Jackson extends Parse {
+public class Jackson  {
 
-    @Override
+
     public Hospital parse(String fileName) {
         ObjectMapper objectMapper = new ObjectMapper();
         Hospital hospital = null;

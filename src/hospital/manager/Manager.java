@@ -143,11 +143,7 @@ public class Manager {
 
             default:
                 System.err.println("Некорректный ввод, попробуйте снова:");
-                try {
-                    Thread.sleep(100);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                waitAnyTimes();
                 this.functionalManualPrapareForWork(HelpInput.inputNumber());
                 break;
         }
@@ -162,8 +158,7 @@ public class Manager {
                 "3)Найти пациента" + "\n" +
                 "4)Сортировать пациентов по..." + "\n" +
                 "5)Показать информацию о госпитале" + "\n" +
-                "6)Создать пациента" + "\n" +
-                "7)Выход из программы");
+                "6)Выход из программыа");
         int input = 0;
         input = HelpInput.inputNumber();
         actionMessage(input);
@@ -204,27 +199,12 @@ public class Manager {
 
         } else if (input == 5) {
             printInfoAboutHospital();
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            waitAnyTimes();
         } else if (input == 6) {
-            System.err.println("Функционал по заданной команде находится в процессе разработки");
-            try {
-                Thread.sleep(100);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        } else if (input == 7) {
             System.out.println("Сохраняем изменения...");
             SaveInfo.saveAll();
             System.out.println("Программа завершает работу...");
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            waitAnyTimes();
             System.exit(666);
         } else {
             System.err.println("Некорректный ввод, попробуйте снова:");
@@ -317,13 +297,16 @@ public class Manager {
                 break;
             default:
                 System.err.println("Некорректный ввод, попробуйте снова:");
-                try {
-                    Thread.sleep(100);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                waitAnyTimes();
                 this.actionMessage(2);
                 break;
+        }
+    }
+    public void waitAnyTimes(){
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 

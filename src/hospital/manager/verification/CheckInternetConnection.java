@@ -5,7 +5,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.UnknownHostException;
 
-public class CheckInternetConnectionByURL {
+public class CheckInternetConnection {
     public static boolean checkAdress(String adress) {
         try {
             URL url = new URL(adress);

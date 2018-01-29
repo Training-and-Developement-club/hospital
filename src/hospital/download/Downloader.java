@@ -1,6 +1,6 @@
 package hospital.download;
 
-import hospital.manager.verification.CheckInternetConnectionByURL;
+import hospital.manager.verification.CheckInternetConnection;
 import hospital.manager.Manager;
 import org.apache.commons.io.FileUtils;
 
@@ -23,7 +23,7 @@ class XmlDownloader implements Downloader {
 
     @Override
     public void urlDownload(String xmlUrl) {
-        boolean checkResult = CheckInternetConnectionByURL.checkAdress(xmlUrl);
+        boolean checkResult = CheckInternetConnection.checkAdress(xmlUrl);
         if (checkResult) {
             try {
                 URL url = new URL(xmlUrl);
@@ -52,7 +52,7 @@ class JsonDownloader implements Downloader {
 
     @Override
     public void urlDownload(String jsonUrl) {
-        boolean checkResult = CheckInternetConnectionByURL.checkAdress(jsonUrl);
+        boolean checkResult = CheckInternetConnection.checkAdress(jsonUrl);
         if (checkResult) {
             try {
                 URL url = new URL(jsonUrl);

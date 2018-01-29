@@ -16,13 +16,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class DOM extends Parse {
+public class DOM {
     /**
      * Десериализация xml документа в java-обьект(Doctors) библиотекай DOM
      */
 
 
-    @Override
     public Hospital parse(String filaName) {
         DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder documentBuilder = null;
@@ -80,7 +79,7 @@ public class DOM extends Parse {
 
 
         hospital.setDoctors(doctors);
-        System.out.println("У");
+        System.out.println();
 
         return hospital;
 
