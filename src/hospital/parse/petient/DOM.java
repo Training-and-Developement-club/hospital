@@ -26,7 +26,7 @@ import java.util.TimeZone;
  * Для сериализации созданных обьектов в xml и их десериализации.
  * C помощью библиотеки DOM
  */
-public class XmlConverter {
+public class DOM {
     private String fileName = "patient.xml";
 
 

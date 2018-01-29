@@ -3,7 +3,7 @@ package hospital.download.threads;
 import hospital.entity.Hospital;
 import hospital.parse.hospital.DOM;
 import hospital.parse.hospital.Jackson;
-import hospital.manager.Manager;
+import hospital.controller.Manager;
 
 /**
  * Класс потока десериализации

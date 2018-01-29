@@ -1,9 +1,9 @@
-package hospital.manager.verification;
+package hospital.controller.verification;
 
 import hospital.download.threads.ThreadDonwload;
 import hospital.download.threads.ThreadParsing;
-import hospital.parse.petient.XmlConverter;
-import hospital.manager.Manager;
+import hospital.parse.petient.DOM;
+import hospital.controller.Manager;
 
 import java.io.File;
 
@@ -52,9 +52,9 @@ public class PreparationForWork {
 
     public void uploadPatientHistory() {
         if (new File("patient.xml").exists()) {
-            XmlConverter xmlConverter = new XmlConverter();
-            xmlConverter.convertFromXml();
-            xmlConverter = null;
+            DOM DOM = new DOM();
+            DOM.convertFromXml();
+            DOM = null;
         }
 
     }

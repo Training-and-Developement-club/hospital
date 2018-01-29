@@ -1,4 +1,4 @@
-package hospital.manager.verification;
+package hospital.controller.verification;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;

@@ -12,7 +12,7 @@ public class Hospital {
 
     @Override
     public String toString() {
-        return "Информация о больнице {" +
+        return "Информация о госпитале {" +
                 "name='" + name + '\'' +
                 ", location='" + location + '\'' +
                 ", doctors=" + doctors +

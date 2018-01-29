@@ -1,7 +1,7 @@
-package hospital;
+package hospital.controller;
 
 
-import hospital.manager.Manager;
+import hospital.controller.Manager;
 
 /**
  * Класс Main содержит метод "main" и используется только для запуска программы

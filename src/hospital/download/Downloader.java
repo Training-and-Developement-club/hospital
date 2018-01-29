@@ -1,7 +1,7 @@
 package hospital.download;
 
-import hospital.manager.verification.CheckInternetConnection;
-import hospital.manager.Manager;
+import hospital.controller.verification.CheckInternetConnection;
+import hospital.controller.Manager;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;

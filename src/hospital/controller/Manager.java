@@ -1,4 +1,4 @@
-package hospital.manager;
+package hospital.controller;
 
 import hospital.download.chain.JsonMatchChain;
 import hospital.download.chain.MatchString;
@@ -14,8 +14,8 @@ import hospital.search.SearchDoctorsByDate;
 import hospital.search.SearchPatientByDate;
 import hospital.search.SearchPatientByName;
 import hospital.sort.*;
-import hospital.manager.verification.PreparationForWork;
-import hospital.manager.verification.SaveInfo;
+import hospital.controller.verification.PreparationForWork;
+import hospital.controller.verification.SaveInfo;
 
 import java.io.File;
 import java.util.Collections;
