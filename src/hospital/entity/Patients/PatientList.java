@@ -5,29 +5,27 @@ import java.util.List;
 import java.util.Objects;
 
 
-
 /**
-*  Здесь, в (List<Patient> patients) хранится список всех пациентов, которые уже есть и которых предстоит добавить.
+ * Здесь, в (List<Patient> patients) хранится список всех пациентов, которые уже есть и которых предстоит добавить.
  * Объект является одиночкой(Singleton)
-*/
+ */
 public class PatientList {
     private List<Patient> patients = new ArrayList<>();
     private static PatientList patientList;
-    private PatientList(){
+
+    private PatientList() {
 
     }
 
     /**
-    * @return Единственный нужный обьект пациентов.
-    * */
-    public static PatientList getInstance(){
-        if(patientList == null){
+     * @return Единственный нужный обьект пациентов.
+     */
+    public static PatientList getInstance() {
+        if (patientList == null) {
             patientList = new PatientList();
-            }
+        }
         return patientList;
     }
-
-
 
 
     public List<Patient> getPatients() {
@@ -39,12 +37,10 @@ public class PatientList {
     }
 
 
-
     @Override
     public String toString() {
-        return "Список пациентов {" +
-                "patients=" + patients +
-                '}';
+        return "Список пациентов:" + "\n" +
+                patients.toString();
     }
 
     @Override

@@ -7,18 +7,18 @@ import java.util.*;
 
 /**
  * Обьект пациент
- * */
+ */
 public class Patient extends People {
-    private Map<String,String> fullName = new HashMap<>();
+    private Map<String, String> fullName = new HashMap<>();
     private String complaints;
     private int age;
     private Gender gender;
     private String diseases; //Результат осмотра у доктора. (Заболевание пациента)
     private boolean isAlive = true;
+
     public Patient() {
 
     }
-
 
 
     public Patient(int id, String firstName, String surName, String lastName, String complaints, Gender gender, Date dateOfBirth, String diseases) {
@@ -69,17 +69,16 @@ public class Patient extends People {
 
     @Override
     public String toString() {
-        return "Patient{" +
-                "fullName=" + fullName +
-                ", complaints='" + complaints + '\'' +
-                ", age=" + age +
-                ", gender=" + gender +
-                ", diseases='" + diseases + '\'' +
-                ", isAlive=" + isAlive +
-                ", id=" + id +
-                ", name='" + name + '\'' +
-                ", dateOfBirth=" + dateOfBirth +
-                '}';
+        return "\t" + "Patient{" +
+                fullName +
+                ", симптомы '" + complaints + '\'' +
+                ", возраст: " + age +
+                ", пол: " + gender +
+                ", заболевания: '" + diseases + '\'' +
+                ", жив: " + isAlive +
+                ", id: " + id +
+                ", Дата рождения: " + dateOfBirth +
+                '}' + "\n";
     }
 
     public int getAge() {

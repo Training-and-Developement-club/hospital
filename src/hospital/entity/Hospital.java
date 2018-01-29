@@ -2,9 +2,10 @@ package hospital.entity;
 
 import java.util.List;
 import java.util.Objects;
+
 /**
  * Обьект больница.
- * */
+ */
 public class Hospital {
     private String name;
     private String location;
@@ -13,9 +14,9 @@ public class Hospital {
     @Override
     public String toString() {
         return "Информация о госпитале {" +
-                "name='" + name + '\'' +
-                ", location='" + location + '\'' +
-                ", doctors=" + doctors +
+                "Госпиталь имени - '" + name + '\'' +
+                ", место обитания'" + location + '\'' + "\n" +
+                ", " + doctors +
                 '}' + "\n";
     }
 

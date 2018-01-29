@@ -6,33 +6,33 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
+
 /**
  * Обьект Доктор
-* */
+ */
 public class Doctors extends People {
     private int id;
     private String name;
     private String degree;
     private Date dateOfBirth;
-   // @JsonProperty ("yearExperience")
+    // @JsonProperty ("yearExperience")
     private int yearEperience;
-    @JsonProperty ("type")
+    @JsonProperty("type")
     private List<String> type;
     private boolean visible;
 
 
-
     @Override
     public String toString() {
-        return "Doctors{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", degree='" + degree + '\'' +
-                ", dateOfBirth=" + dateOfBirth +
-                ", yearEperience=" + yearEperience +
-                ", type=" + type +
-                ", visible=" + visible +
-                '}';
+        return "\t" + "Доктор{" +
+                "id:" + id +
+                ", имя:'" + name + '\'' +
+                ", степень:'" + degree + '\'' +
+                ", дата рождения: " + dateOfBirth +
+                ", опыт работы: " + yearEperience +
+                ", тип:" + type +
+                ", visible:" + visible +
+                '}' + "\n";
     }
 
     @Override
