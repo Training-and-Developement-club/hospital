@@ -2,7 +2,6 @@ package hospital;
 
 
 import hospital.manager.Manager;
-import hospital.manager.search.SearchPatientByName;
 
 /**
  * Класс Main содержит метод "main" и используется только для запуска программы
